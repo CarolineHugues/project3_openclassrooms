@@ -108,8 +108,6 @@ class Chapter {
 		return $this->_status;
 	}
 
-	//Test github
-
 
 }
 ?>
