@@ -13,7 +13,7 @@ class Chapter {
 	         $_status = draft; // Chapitre : brouillon ou publié
 
 
-	public function construct($donnees) {
+	public function __construct($donnees) {
 
 	}
 
