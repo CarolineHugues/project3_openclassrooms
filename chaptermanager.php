@@ -5,7 +5,7 @@ class ChapterManager {
 
 	private  $_bd;
 
-	public function construct($db) {
+	public function __construct($db) {
 
 	}
 
