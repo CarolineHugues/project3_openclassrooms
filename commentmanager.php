@@ -4,7 +4,7 @@ class CommentManager {
 
 	private  $_db;
 
-	public function contruct($db) {
+	public function __construct($db) {
 
 	}
 
