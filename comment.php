@@ -9,7 +9,7 @@ class Comment {
 			 $_authorMail,
 			 $_status = published; // Commentaire : publié ou signalé
 
-	public function construct($donnees) {
+	public function __construct($donnees) {
 
 	}
 
