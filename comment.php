@@ -1,28 +1,15 @@
 <?php
 
-class Comment {
+class Comment extends Entity
+{
 
-	private  $_id, 
-			 $_author,
+	private  $_author,
 			 $_content,
 			 $_publishedDate,
 			 $_authorMail,
 			 $_status = published; // Commentaire : publié ou signalé
 
-	public function __construct($donnees) {
-
-	}
-
-	public function hydrate($donnes) {
-
-	}
-
 	//SETTERS
-
-	public function setId($id) {
-		/*Vérifier que la valeur soit de type int*/
-
-	}
 
 	public function setAuthor($author) {
 		/*Vérifier que la valeur soit bien de type string et non vide */
@@ -50,10 +37,6 @@ class Comment {
 	}
 
 	// GETTERS
-
-	public function id() {
-		return $this->_id;
-	}
 
 	public function author() {
 		return $this->_author;
