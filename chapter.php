@@ -1,9 +1,9 @@
 <?php
 
-class Chapter {
+class Chapter extends Entity 
+{
 
-	private  $_id,
-			 $_title,
+	private  $_title,
 			 $_author,
 			 $_content,
 			 $_excerpt,
@@ -13,20 +13,7 @@ class Chapter {
 	         $_status = draft; // Chapitre : brouillon ou publié
 
 
-	public function __construct($donnees) {
-
-	}
-
-	public function hydrate($donnes) {
-
-	}
-
 	// SETTERS
-
-	public function setId($id) {
-		/*Vérifier que la valeur soit de type int*/
-
-	}
 
 	public function setTitle($title) {
 		/*Vérifier que la valeur soit bien de type string et non vide */
@@ -70,10 +57,6 @@ class Chapter {
 
 
 	// GETTERS
-	
-	public function id() {
-		return $this->_id;
-	}
 
 	public function title() {
 		return $this->_title;
@@ -109,4 +92,3 @@ class Chapter {
 	}
 
 }
-?>
