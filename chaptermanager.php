@@ -30,7 +30,7 @@ class ChapterManager extends Manager
 	}
 
 	public function delete($id) 
-	{+
+	{
 		$this->db->exec('DELETE FROM chapters WHERE id = '.(int) $id);
 	}
 
@@ -94,7 +94,7 @@ class ChapterManager extends Manager
 
 		$chapter->setAddDate(new DateTime($chapter->AddDate()));
 		$chapter->setUpdateDate(new DateTime($chapter->updateDate()));
-		$chapter->setPunlishedDate(new DateTime($chapter->publishedDate()));
+		$chapter->setPublishedDate(new DateTime($chapter->publishedDate()));
 
 		return $chapter;
 	}
