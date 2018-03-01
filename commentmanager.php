@@ -1,19 +1,7 @@
 <?php
 
-class CommentManager 
+class CommentManager extends Manager 
 {
-	private  $_db;
-
-	public function __construct($db) 
-	{
-		$this->setDb($db);
-	}
-
-	public function setDb(PDO $db) 
-	{
-		$this->_db = $db;
-	}
-
 	public function add(Comment $comment) 
 	{
 		$requete = $this->db->prepare('INSERT INTO comments (author, content, publishedDate, authorMail, status) VALUES(:author, :content, NOW(), :authorMail, :status)');
