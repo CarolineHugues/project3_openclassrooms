@@ -15,7 +15,7 @@ class Comment extends Entity
 
 	public function isValid()
 	{
-		return !(empty($this->author) || empty($this->content) || empty($this->authorMail) || empty($this->status));
+		return !(empty($this->_author) || empty($this->_content) || empty($this->_authorMail) || empty($this->_status));
 	}  		 
 
 	//SETTERS
@@ -27,7 +27,7 @@ class Comment extends Entity
 			$this->errors[] = self::INVALID_AUTHOR;
 		}
 
-		$this->author = $author;
+		$this->_author = $author;
 	}
 
 	public function setContent($content) 
@@ -37,12 +37,12 @@ class Comment extends Entity
 			$this->errors[] = self::INVALID_CONTENT;
 		}
 
-		$this->content = $content;
+		$this->_content = $content;
 	}
 
-	public function setPublishedDate(DateTime $pubishedDate) 
+	public function setPublishedDate(DateTime $publishedDate) 
 	{
-		$this->publishedDate = $publishedDate;
+		$this->_publishedDate = $publishedDate;
 	}
 
 	public function setAuthorMail($authorMail) 
@@ -52,17 +52,17 @@ class Comment extends Entity
 			$this->errors[] = self::INVALID_AUTHORMAIL;
 		}
 
-		$this->authorMail = $authorMail;
+		$this->_authorMail = $authorMail;
 	}
 
 	public function setStatus($status) 
 	{
-		if (!is_string($status) || empty($status) || ($status != 'published' && $status != 'reported'))
+		if (($status != 'published' && $status != 'reported') || empty($status))
 		{
 			$this->errors[] = self::INVALID_STATUS;
 		}
 
-		$this->status = $status;
+		$this->_status = $status;
 	}
 
 	// GETTERS
