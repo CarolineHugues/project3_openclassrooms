@@ -1,19 +1,7 @@
 <?php
 
-class ChapterManager 
+class ChapterManager extends Manager 
 {
-	private  $_db;
-
-	public function __construct($db) 
-	{
-		$this->setDb($db);
-	}
-
-	public function setDb(PDO $db) 
-	{
-		$this->_db = $db;
-	}
-
 	public function add(Chapter $chapter) 
 	{
 		$requete = $this->db->prepare('INSERT INTO chapters (title, author, content, excerpt, addDate, updateDate, publishedDate, status) VALUES(:title, :author, :content, :excerpt, NOW(), NOW(), NOW(), :status)');
