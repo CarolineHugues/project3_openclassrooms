@@ -19,7 +19,7 @@ class Chapter extends Entity
 
 	public function isValid()
 	{
-		return !(empty($this->title) || empty($this->author) || empty($this->content) || empty($this->excerpt) || empty($this->status));
+		return !(empty($this->_title) || empty($this->_author) || empty($this->_content) || empty($this->_excerpt) || empty($this->_status));
 	}        
 
 
@@ -32,7 +32,7 @@ class Chapter extends Entity
 			$this->errors[] = self::INVALID_TITLE;
 		}
 
-		$this->title = $title;
+		$this->_title = $title;
 	}
 
 	public function setAuthor($author) 
@@ -42,7 +42,7 @@ class Chapter extends Entity
 			$this->errors[] = self::INVALID_AUTHOR;
 		}
 
-		$this->author = $author;
+		$this->_author = $author;
 	}
 
 	public function setContent($content) 
@@ -52,7 +52,7 @@ class Chapter extends Entity
 			$this->errors[] = self::INVALID_CONTENT;
 		}
 
-		$this->content = $content;
+		$this->_content = $content;
 	}
 
 	public function setExcerpt($excerpt) 
@@ -62,32 +62,32 @@ class Chapter extends Entity
 			$this->errors[] = self::INVALID_EXCERPT;
 		}
 
-		$this->excerpt = $excerpt;
+		$this->_excerpt = $excerpt;
 	}
 
 	public function setAddDate(DateTime $addDate) 
 	{
-		$this->addDate = $addDate;
+		$this->_addDate = $addDate;
 	}
 
 	public function setUpdateDate(DateTime $updateDate) 
 	{
-		$this->updateDate = $updateDate;
+		$this->_updateDate = $updateDate;
 	}
 
 	public function setPublishedDate(DateTime $publishedDate) 
 	{
-		$this->publishedDate = $publishedDate;
+		$this->_publishedDate = $publishedDate;
 	}
 
 	public function setStatus($status) 
 	{
-		if (!is_string($status) || empty($status) || ($status != 'draft' && $status != 'published'))
+		if (($status != 'draft' && $status != 'published') || empty($status))
 		{
 			$this->errors[] = self::INVALID_STATUS;
 		}
 
-		$this->status = $status;
+		$this->_status = $status;
 	}
 
 
