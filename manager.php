@@ -2,7 +2,7 @@
 
 abstract class Manager 
 {
-	private  $_db;
+	protected  $db;
 
 	public function __construct($db) 
 	{
@@ -11,6 +11,6 @@ abstract class Manager
 
 	public function setDb(PDO $db) 
 	{
-		$this->_db = $db;
+		$this->db = $db;
 	}
 }
