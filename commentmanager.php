@@ -4,14 +4,14 @@ class CommentManager extends Manager
 {
 	public function add(Comment $comment) 
 	{
-		$requete = $this->db->prepare('INSERT INTO comments (author, content, publishedDate, authorMail, status) VALUES(:author, :content, NOW(), :authorMail, :status)');
+		$request = $this->db->prepare('INSERT INTO comments (author, content, publishedDate, authorMail, status) VALUES(:author, :content, NOW(), :authorMail, :status)');
 
-		$requete->bindValue(':author', $comments->author());
-		$requete->bindValue(':content', $comments->content());
-		$requete->bindValue(':authorMail', $comments->authorMail());
-		$requete->bindValue(':status', $comments->status());
+		$request->bindValue(':author', $comments->author());
+		$request->bindValue(':content', $comments->content());
+		$request->bindValue(':authorMail', $comments->authorMail());
+		$request->bindValue(':status', $comments->status());
 
-		$requete->execute();
+		$request->execute();
 	}
 
 	public function delete($id) 
@@ -33,25 +33,25 @@ class CommentManager extends Manager
 	{
 		$status = 'reported';
 
-		$requete = $this->db->prepare('UPDATE comments SET status = :status WHERE id = :id');
+		$request = $this->db->prepare('UPDATE comments SET status = :status WHERE id = :id');
 
-		$requete->bindValue(':status', $status, PDO::PARAM_STR);
-		$requete->bindValue(':id', $comment->id(), PDO::PARAM_INT);
+		$request->bindValue(':status', $status, PDO::PARAM_STR);
+		$request->bindValue(':id', $comment->id(), PDO::PARAM_INT);
 
-		$requete->execute();
+		$request->execute();
 	}
 
 	public function getUnique($id) 
 	{
-		$requete = $this->db->prepare('SELECT id, author, content, publishedDate, authorMail, status FROM comments WHERE id = :id');
+		$request = $this->db->prepare('SELECT id, author, content, publishedDate, authorMail, status FROM comments WHERE id = :id');
 
-		$requete->bindValue(':id', (int) $id, PDO::PARAM_INT);
+		$request->bindValue(':id', (int) $id, PDO::PARAM_INT);
 
-		$requete->execute();
+		$request->execute();
 
-		$requete->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, '\Entity\Comment');
+		$request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, '\Entity\Comment');
 
-		$comment = $requete->fetch();
+		$comment = $request->fetch();
 
 		$comment->setPublishedDate(new DateTime($comment->publishedDate()));
 
@@ -67,17 +67,17 @@ class CommentManager extends Manager
 				$sql .= ' LIMIT '.(int) $limit.' OFFSET '.(int) $start;
 			}
 
-		$requete = $this->db->query($sql);
-		$requete->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, '\Entity\Comment');
+		$request = $this->db->query($sql);
+		$request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, '\Entity\Comment');
 
-		$commentsList = $requete->fetchAll();
+		$commentsList = $request->fetchAll();
 
 		foreach ($commentsList as $comment)
 		{
 			$comment->setPublishedDate(new DateTime($comment->publishedDate()));
 		}
 
-		$requete->closeCursor();
+		$request->closeCursor();
 
 		return $commentsList;
 	}
@@ -91,17 +91,17 @@ class CommentManager extends Manager
 				$sql .= ' LIMIT '.(int) $limit.' OFFSET '.(int) $start;
 			}
 
-		$requete = $this->db->query($sql);
-		$requete->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, '\Entity\Comment');
+		$request = $this->db->query($sql);
+		$request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, '\Entity\Comment');
 
-		$reportedList = $requete->fetchAll();
+		$reportedList = $request->fetchAll();
 
 		foreach ($reportedList as $comment)
 		{
 			$comment->setPublishedDate(new DateTime($comment->publishedDate()));
 		}
 
-		$requete->closeCursor();
+		$request->closeCursor();
 
 		return $reportedList;
 	}
