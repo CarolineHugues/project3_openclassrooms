@@ -47,7 +47,7 @@ abstract class Entity
 	// SETTERS
 
 	public function setId($id) 
-	{ /*Vérifier que la valeur soit de type int*/
+	{ /
 		$this->id = (int) id;
 	}
 }
