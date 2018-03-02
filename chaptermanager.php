@@ -4,29 +4,29 @@ class ChapterManager extends Manager
 {
 	public function add(Chapter $chapter) 
 	{
-		$requete = $this->db->prepare('INSERT INTO chapters (title, author, content, excerpt, addDate, updateDate, publishedDate, status) VALUES(:title, :author, :content, :excerpt, NOW(), NOW(), NOW(), :status)');
+		$request = $this->db->prepare('INSERT INTO chapters (title, author, content, excerpt, addDate, updateDate, publishedDate, status) VALUES(:title, :author, :content, :excerpt, NOW(), NOW(), NOW(), :status)');
 
-		$requete->bindValue(':title', $chapter->title());
-		$requete->bindValue(':author', $chapter->author());
-		$requete->bindValue(':content', $chapter->content());
-		$requete->bindValue(':excerpt', $chapter->excerpt());
-		$requete->bindValue(':status', $chapter->status());
+		$request->bindValue(':title', $chapter->title());
+		$request->bindValue(':author', $chapter->author());
+		$request->bindValue(':content', $chapter->content());
+		$request->bindValue(':excerpt', $chapter->excerpt());
+		$request->bindValue(':status', $chapter->status());
 
-		$requete->execute();
+		$request->execute();
 	}
 
 	public function update(Chapter $chapter) 
 	{
-		$requete = $this->db->prepare('UPDATE chapters SET title = :title, author = :author, content = :content, excerpt = :excerpt, updateDate = NOW(), publishedDate = NOW(), status = :status WHERE id = :id');
+		$request = $this->db->prepare('UPDATE chapters SET title = :title, author = :author, content = :content, excerpt = :excerpt, updateDate = NOW(), publishedDate = NOW(), status = :status WHERE id = :id');
 
-		$requete->bindValue(':title', $chapter->title());
-		$requete->bindValue(':author', $chapter->author());
-		$requete->bindValue(':content', $chapter->content());
-		$requete->bindValue(':excerpt', $chapter->excerpt());
-		$requete->bindValue(':status', $chapter->status());
-		$requete->bindValue(':id', $chapter->id(), PDO::PARAM_INT);
+		$request->bindValue(':title', $chapter->title());
+		$request->bindValue(':author', $chapter->author());
+		$request->bindValue(':content', $chapter->content());
+		$request->bindValue(':excerpt', $chapter->excerpt());
+		$request->bindValue(':status', $chapter->status());
+		$request->bindValue(':id', $chapter->id(), PDO::PARAM_INT);
 
-		$requete->execute();
+		$request->execute();
 	}
 
 	public function delete($id) 
@@ -50,12 +50,12 @@ class ChapterManager extends Manager
 	{
 		$status = 'published';
 
-		$requete = $this->db->prepare('UPDATE chapters SET status = :status WHERE id = :id');
+		$request = $this->db->prepare('UPDATE chapters SET status = :status WHERE id = :id');
 
-		$requete->bindValue(':status', $status, PDO::PARAM_STR);
-		$requete->bindValue(':id', $chapter->id(), PDO::PARAM_INT);
+		$request->bindValue(':status', $status, PDO::PARAM_STR);
+		$request->bindValue(':id', $chapter->id(), PDO::PARAM_INT);
 
-		$requete->execute();
+		$request->execute();
 	}
 
 	public function countDrafts() 
@@ -82,15 +82,15 @@ class ChapterManager extends Manager
 
 	public function getUnique($id) 
 	{
-		$requete = $this->db->prepare('SELECT id, title, author, content, excerpt, addDate, updateDate, publishedDate, status FROM chapters WHERE id = :id');
+		$request = $this->db->prepare('SELECT id, title, author, content, excerpt, addDate, updateDate, publishedDate, status FROM chapters WHERE id = :id');
 
-		$requete->bindValue(':id', (int) $id, PDO::PARAM_INT);
+		$request->bindValue(':id', (int) $id, PDO::PARAM_INT);
 
-		$requete->execute();
+		$request->execute();
 
-		$requete->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, '\Entity\Chapter');
+		$request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, '\Entity\Chapter');
 
-		$chapter = $requete->fetch();
+		$chapter = $request->fetch();
 
 		$chapter->setAddDate(new DateTime($chapter->AddDate()));
 		$chapter->setUpdateDate(new DateTime($chapter->updateDate()));
@@ -108,10 +108,10 @@ class ChapterManager extends Manager
 				$sql .= ' LIMIT '.(int) $limit.' OFFSET '.(int) $start;
 			}
 
-		$requete = $this->db->query($sql);
-		$requete->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, '\Entity\Chapter');
+		$request = $this->db->query($sql);
+		$request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, '\Entity\Chapter');
 
-		$DraftsList = $requete->fetchAll();
+		$DraftsList = $request->fetchAll();
 
 		foreach ($DraftsList as $chapter)
 		{
@@ -120,7 +120,7 @@ class ChapterManager extends Manager
 			$chapter->setPublishedDate(new DateTime($chapter->publishedDate()));
 		}
 
-		$requete->closeCursor();
+		$request->closeCursor();
 
 		return $DraftsList;
 	}
@@ -134,10 +134,10 @@ class ChapterManager extends Manager
 				$sql .= ' LIMIT '.(int) $limit.' OFFSET '.(int) $start;
 			}
 
-		$requete = $this->db->query($sql);
-		$requete->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, '\Entity\Chapter');
+		$request = $this->db->query($sql);
+		$request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, '\Entity\Chapter');
 
-		$PublishedChaptersList = $requete->fetchAll();
+		$PublishedChaptersList = $request->fetchAll();
 
 		foreach ($PublishedChaptersList as $chapter)
 		{
@@ -146,7 +146,7 @@ class ChapterManager extends Manager
 			$chapter->setPublishedDate(new DateTime($chapter->publishedDate()));
 		}
 
-		$requete->closeCursor();
+		$request->closeCursor();
 
 		return $PublishedChaptersList;
 	}
@@ -160,10 +160,10 @@ class ChapterManager extends Manager
 				$sql .= ' LIMIT '.(int) $limit.' OFFSET '.(int) $start;
 			}
 
-		$requete = $this->db->query($sql);
-		$requete->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, '\Entity\Chapter');
+		$request = $this->db->query($sql);
+		$request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, '\Entity\Chapter');
 
-		$chaptersList = $requete->fetchAll();
+		$chaptersList = $request->fetchAll();
 
 		foreach ($chaptersList as $chapter)
 		{
@@ -172,7 +172,7 @@ class ChapterManager extends Manager
 			$chapter->setPublishedDate(new DateTime($chapter->publishedDate()));
 		}
 
-		$requete->closeCursor();
+		$request->closeCursor();
 
 		return $chaptersList;
 	}
