@@ -4,14 +4,28 @@ class CommentManager extends Manager
 {
 	public function add(Comment $comment) 
 	{
-		$request = $this->db->prepare('INSERT INTO comments (author, content, publishedDate, authorMail, status) VALUES(:author, :content, NOW(), :authorMail, :status)');
+		if ($comment->isValid())
+		{
+			if ($comment->isNew()) 
+			{
+				$request = $this->db->prepare('INSERT INTO comments (author, content, publishedDate, authorMail, status) VALUES(:author, :content, NOW(), :authorMail, :status)');
 
-		$request->bindValue(':author', $comments->author());
-		$request->bindValue(':content', $comments->content());
-		$request->bindValue(':authorMail', $comments->authorMail());
-		$request->bindValue(':status', $comments->status());
+				$request->bindValue(':author', $comments->author());
+				$request->bindValue(':content', $comments->content());
+				$request->bindValue(':authorMail', $comments->authorMail());
+				$request->bindValue(':status', $comments->status());
 
-		$request->execute();
+				$request->execute();
+			}
+			else 
+			{
+				throw new RuntimeException('Le commentaire a déjà été ajouté');
+			}
+		}
+		else 
+		{
+			throw new RuntimeException('Le commentaire doit être valide pour être enregistré');
+		}
 	}
 
 	public function delete($id) 
