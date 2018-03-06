@@ -13,6 +13,8 @@ class ChapterManager extends Manager
 		$request->bindValue(':status', $chapter->status());
 
 		$request->execute();
+
+		$request->closeCursor(); 
 	}
 
 	public function update(Chapter $chapter) 
@@ -27,6 +29,8 @@ class ChapterManager extends Manager
 		$request->bindValue(':id', $chapter->id(), PDO::PARAM_INT);
 
 		$request->execute();
+
+		$request->closeCursor(); 
 	}
 
 	public function delete($id) 
