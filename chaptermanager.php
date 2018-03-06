@@ -53,24 +53,17 @@ class ChapterManager extends Manager
 
 	public function countDrafts() 
 	{
-		{
-			return $this->db->query('SELECT COUNT(*) FROM chapters WHERE status = \'draft\'')->fetchColumn(); 
-		}
+		return $this->db->query('SELECT COUNT(*) FROM chapters WHERE status = \'draft\'')->fetchColumn(); 
 	}
 
 	public function countPublished() 
 	{
-		{
 			return $this->db->query('SELECT COUNT(*) FROM chapters WHERE status = \'published\'')->fetchColumn(); 
-		}
 	}
 
 	public function countChapters() 
 	{
-		public function count()
-		{ 
 			return $this->db->query('SELECT COUNT(*) FROM chapters')->fetchColumn();  
-		}
 	}
 
 	public function getUnique($id) 
