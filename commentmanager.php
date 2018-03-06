@@ -48,7 +48,7 @@ class CommentManager extends Manager
 		$this->db->exec('UPDATE comments SET status = \'reported\' WHERE id = :id');
 	}
 
-	public function ignoreReportComment() 
+	public function ignoreReportedComment() 
 	{
 		$this->db->exec('UPDATE comments SET status = \'published\' WHERE id = :id');
 	}
