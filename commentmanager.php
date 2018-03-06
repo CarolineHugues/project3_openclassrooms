@@ -45,14 +45,12 @@ class CommentManager extends Manager
 
 	public function reportComment() 
 	{
-		$status = 'reported';
+		$this->db->exec('UPDATE comments SET status = \'reported\' WHERE id = :id');
+	}
 
-		$request = $this->db->prepare('UPDATE comments SET status = :status WHERE id = :id');
-
-		$request->bindValue(':status', $status, PDO::PARAM_STR);
-		$request->bindValue(':id', $comment->id(), PDO::PARAM_INT);
-
-		$request->execute();
+	public function ignoreReportComment() 
+	{
+		$this->db->exec('UPDATE comments SET status = \'published\' WHERE id = :id');
 	}
 
 	public function getUnique($id) 
