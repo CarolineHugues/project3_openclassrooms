@@ -48,14 +48,7 @@ class ChapterManager extends Manager
 
 	public function publish(Chapter $chapter) 
 	{
-		$status = 'published';
-
-		$request = $this->db->prepare('UPDATE chapters SET status = :status WHERE id = :id');
-
-		$request->bindValue(':status', $status, PDO::PARAM_STR);
-		$request->bindValue(':id', $chapter->id(), PDO::PARAM_INT);
-
-		$request->execute();
+		$this->db->exec('UPDATE chapters SET status = \'published\' WHERE id = :id');
 	}
 
 	public function countDrafts() 
