@@ -3,27 +3,33 @@
 class Connection 
 {
 	private $_login,
-			$_password,
-			$_errors = [],
-			$_passwordhash = password_hash($_POST['password'], PASSWORD_DEFAULT),; 	
+			$_password = password_hash($_POST['password'], PASSWORD_DEFAULT),
+			$_errors = []; 	
 
 	const INVALID_PASSWORD = 1;
 
 	public function isValid() 
 	{
-		return !empty($_POST['login']) && !empty($_POST['password']) && password_verify($_POST['password'], passwordhash()) && $data['valid_correspondence'] != 0 /*Le login correspond au mot de passe*/;
+		return !empty($_POST['login']) && !empty($_POST['password']) &&  $this->correspond() != 0 /*Le login correspond au mot de passe*/;
 	}
 
 	public function correspond()
 	{
-		$request = $this->db->prepare('SELECT COUNT(*) AS valid_correspondence FROM connection WHERE password = :password AND login = :login'); 
+		if (password_verify($_POST['password'], password()))
+		{
+			$request = $this->db->prepare('SELECT COUNT(*) AS valid_correspondence FROM connection WHERE password = :password AND login = :login'); 
 
-		$request->bindValue(':password', password_hash($_POST['password']), PDO::PARAM_STR);
-		$request->bindValue(':login', $_POST['login'], PDO::PARAM_STR);
+			$request->bindValue(':password', password_hash($_POST['password']), PDO::PARAM_STR);
+			$request->bindValue(':login', $_POST['login'], PDO::PARAM_STR);
 
-		$data = $request->execute();
+			$data = $request->execute();
 
-		$request->closeCursor(); 
+			return = $data; 
+		}
+		else 
+		{
+			return = 0;
+		} 
 	}
 
 	// SETTERS
@@ -46,9 +52,9 @@ class Connection
 		return this->_errors;
 	}
 
-	public function passwordhash()
+	public function password()
 	{
-		return this->_passwordhash;
+		return this->_password;
 	}
 
 }
