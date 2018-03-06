@@ -7,7 +7,7 @@ class ConnectionManager extends Manager
 	{
 		$request = $this->db->prepare('UPDATE connection SET password = :password WHERE login = :login');
 
-		$request->bindValue(':password', $connection->passwordhash());
+		$request->bindValue(':password', $connection->password());
 
 		$request->execute();
 
