@@ -16,6 +16,8 @@ class CommentManager extends Manager
 				$request->bindValue(':status', $comments->status());
 
 				$request->execute();
+
+				$request->closeCursor(); 
 			}
 			else 
 			{
