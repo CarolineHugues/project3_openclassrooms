@@ -121,4 +121,22 @@ class CommentManager extends Manager
 		return $reportedList;
 	}
 
+	public function getListOf($idChapter)
+  	{
+  		if (!ctype_digit($idChapter))
+  		{
+  			throw new \InvalidArgumentException('L\'identifiant du chapitre passé doit être un nombre entier valide');
+  		}
+
+  		$request = $this->db->prepare('SELECT id, author, content, publishedDate, authorMail, status, idChapter FROM comments WHERE idChapter = :idChapter');
+    	$request->bindValue(':idChapter', $idChapter, PDO::PARAM_INT);
+   		$request->execute();
+    
+    	$request->setFetchMode( PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, '\Entity\Comment');
+    
+    	$comments = $request->fetchAll();
+    
+   		return $comments;
+  	}
+
 }
