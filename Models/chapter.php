@@ -3,7 +3,7 @@
 class Chapter extends Entity 
 {
 	private  $_title,
-			 $_author,
+			 $_author = 'Jean Forteroche',
 			 $_content,
 			 $_excerpt,
 			 $_addDate,
