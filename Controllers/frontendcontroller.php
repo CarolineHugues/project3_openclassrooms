@@ -30,9 +30,9 @@ class FrontendController {
     	$view->generate(array('chapter' => $chapter, 'comments' => $comments));
 	}
 
-	public function addComment(Comment $comment)
+	public function addComment(Comment $comment, $idChapter)
 	{
-		$this->_commentManager->add(Comment $comment, $idChapter);
+		$this->_commentManager->add(Comment $comment);
 		$this->chapter($idChapter); //Actualisation de l'affichage du chapitre 
 	}
 
