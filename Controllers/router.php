@@ -36,6 +36,14 @@ class Router
                 {
                     throw new Exception("Action non valide");    
                 }
+                else if ($_GET['action'] == 'reportComment') 
+                {
+                    $this->_frontendController->reportComment();
+                }    
+                else 
+                {
+                    throw new Exception("Action non valide");    
+                }
             }           
 			else 
             {
