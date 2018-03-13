@@ -36,6 +36,12 @@ class FrontendController {
 		$this->chapter($idChapter); //Actualisation de l'affichage du chapitre 
 	}
 
+	public function reportComment($idChapter)
+	{
+		$this->_commentManager->reportComment();
+		$this->chapter($idChapter); 
+	}
+
 }
 
 
