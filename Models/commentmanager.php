@@ -8,13 +8,13 @@ class CommentManager extends Manager
 		{
 			if ($comment->isNew()) 
 			{
-				$request = $this->db->prepare('INSERT INTO comments (author, content, publishedDate, authorMail, status, idChapter) VALUES(:author, :content, NOW(), :authorMail, :status, :idChapter)');
+				$request = $this->db->prepare('INSERT INTO comments (author, content, publishedDate, authorMail, status, chapterId) VALUES(:author, :content, NOW(), :authorMail, :status, :chapterId)');
 
 				$request->bindValue(':author', $comment->author());
 				$request->bindValue(':content', $comment->content());
 				$request->bindValue(':authorMail', $comment->authorMail());
 				$request->bindValue(':status', $comment->status());
-				$request->bindValue(':idChapter', $comment->idChapter(), PDO::PARAM_INT);
+				$request->bindValue(':chapterId', $comment->chapterId(), PDO::PARAM_INT);
 
 				$request->execute();
 
@@ -64,7 +64,7 @@ class CommentManager extends Manager
 
 		$request->execute();
 
-		$request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, '\Entity\Comment');
+		$request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Comment');
 
 		$comment = $request->fetch();
 
@@ -83,7 +83,7 @@ class CommentManager extends Manager
 			}
 
 		$request = $this->db->query($sql);
-		$request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, '\Entity\Comment');
+		$request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Comment');
 
 		$commentsList = $request->fetchAll();
 
@@ -107,7 +107,7 @@ class CommentManager extends Manager
 			}
 
 		$request = $this->db->query($sql);
-		$request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, '\Entity\Comment');
+		$request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Comment');
 
 		$reportedList = $request->fetchAll();
 
@@ -121,18 +121,18 @@ class CommentManager extends Manager
 		return $reportedList;
 	}
 
-	public function getListOf($idChapter)
+	public function getListOf($chapterId)
   	{
-  		if (!ctype_digit($idChapter))
+  		if (!ctype_digit($chapterId))
   		{
   			throw new \InvalidArgumentException('L\'identifiant du chapitre passé doit être un nombre entier valide');
   		}
 
-  		$request = $this->db->prepare('SELECT id, author, content, publishedDate, authorMail, status, idChapter FROM comments WHERE idChapter = :idChapter');
-    	$request->bindValue(':idChapter', $idChapter, PDO::PARAM_INT);
+  		$request = $this->db->prepare('SELECT id, author, content, publishedDate, authorMail, status, chapterId FROM comments WHERE chapterId = :chapterId');
+    	$request->bindValue(':chapterId', $chapterId, PDO::PARAM_INT);
    		$request->execute();
     
-    	$request->setFetchMode( PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, '\Entity\Comment');
+    	$request->setFetchMode( PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Comment');
     
     	$comments = $request->fetchAll();
     

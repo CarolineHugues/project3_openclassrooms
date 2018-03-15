@@ -7,14 +7,13 @@ class View {
 
   public function __construct($action) 
   {
-    $this->_file = "Views/" . $action . "view.php";
+    $this->_file = "Views/" . $action . "View.php";
   }
 
   public function generate($data) 
   {
     $content = $this->generateFile($this->_file, $data);
-    $view = $this->generateFile('View/template.php'),
-      array('title' => $this->_title, 'content' => $content));
+    $view = $this->generateFile('Views/template.php', array('title' => $this->_title, 'content' => $content));
     
     echo $view;
   }

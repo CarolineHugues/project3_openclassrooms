@@ -4,6 +4,12 @@ require_once 'Controllers/frontendcontroller.php';
 class Router 
 {
     private $_frontendController;
+    private $_error;
+
+    public function error()
+    {
+        return $this->_error;
+    }
 
     public function __construct() 
     {
@@ -16,7 +22,11 @@ class Router
         {
             if (isset($_GET['action'])) 
             {
-                if ($_GET['action'] == 'chapter') 
+                if ($_GET['action'] == 'listChapters') 
+                {
+                    $this->_frontendController->listChapters();
+                }  
+                else if ($_GET['action'] == 'chapter') 
                 {
                     if (isset($_GET['id']) && $_GET['id'] > 0) 
                     {
@@ -31,11 +41,7 @@ class Router
                 else if ($_POST['action'] == 'addComment') 
                 {
                     $this->_frontendController->addComment();
-                }    
-                else 
-                {
-                    throw new Exception("Action non valide");    
-                }
+                }   
                 else if ($_GET['action'] == 'reportComment') 
                 {
                     $this->_frontendController->reportComment();
@@ -47,11 +53,13 @@ class Router
             }           
 			else 
             {
-                $this->_frontendController->listChapters();
+                $this->_frontendController->home();
             }
+        }
         catch (Exception $e) 
         {
             $this->error($e->getMessage());
+            echo $e;
         }
     }
 }

@@ -1,4 +1,5 @@
 <?php
+require_once 'Models/entity.php'; /*A ajouter ? */
 
 class Chapter extends Entity 
 {
@@ -134,5 +135,4 @@ class Chapter extends Entity
 	{
 		return $this->_status;
 	}
-
 }

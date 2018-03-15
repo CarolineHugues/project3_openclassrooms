@@ -7,7 +7,7 @@ class Comment extends Entity
 			 $_publishedDate,
 			 $_authorMail,
 			 $_status = 'published', // Commentaire : publié ou signalé
-			 $_idChapter;
+			 $_chapterId;
 
 	const INVALID_AUTHOR = 1;
 	const INVALID_CONTENT= 2;
@@ -66,9 +66,9 @@ class Comment extends Entity
 		$this->_status = $status;
 	}
 
-	public function setIdChapter($idChapter) 
+	public function setchapterId($chapterId) 
 	{
-		$this->_idChapter = (int) $idChapter;
+		$this->_chapterId = (int) $chapterId;
 	}
 
 	// GETTERS
@@ -98,8 +98,8 @@ class Comment extends Entity
 		return $this->_status;
 	}
 
-	public function idChapter() 
+	public function chapterId() 
 	{
-		return $this->_idChapter;
+		return $this->_chapterId;
 	}
 }

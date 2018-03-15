@@ -2,7 +2,9 @@
 
 require_once 'Models/chaptermanager.php';
 require_once 'Models/commentmanager.php';
+require_once 'Models/pdofactory.php';
 require_once 'Views/view.php';
+
 
 class FrontendController {
 
@@ -11,8 +13,8 @@ class FrontendController {
 
   	public function __construct() 
   	{
-    	$this->_chapterManager = new ChapterManager ();
-    	$this->_commentManager = new CommentManager ();
+    	$this->_chapterManager = new ChapterManager (PDOFactory::getMysqlConnexion());
+    	$this->_commentManager = new CommentManager (PDOFactory::getMysqlConnexion());
   	}
 
 	public function listChapters()
@@ -30,16 +32,22 @@ class FrontendController {
     	$view->generate(array('chapter' => $chapter, 'comments' => $comments));
 	}
 
-	public function addComment(Comment $comment, $idChapter)
+	public function addComment(Comment $comment, $chapterId)
 	{
-		$this->_commentManager->add(Comment $comment);
-		$this->chapter($idChapter); //Actualisation de l'affichage du chapitre 
+		$this->_commentManager->add(Comment /*$comment A retirer ?*/);
+		$this->chapter($chapterId); //Actualisation de l'affichage du chapitre 
 	}
 
-	public function reportComment($idChapter)
+	public function reportComment($chapterId)
 	{
 		$this->_commentManager->reportComment();
-		$this->chapter($idChapter); 
+		$this->chapter($chapterId); 
+	}
+
+	public function home()
+	{
+		$view = new View('home');
+		$view->generate(array('home'));
 	}
 
 }
