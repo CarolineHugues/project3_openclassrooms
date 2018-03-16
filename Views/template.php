@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 
 <html>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 778e927d816dc640271d8ca4c8748156f200111e
     <head>
         <meta charset="utf-8" />
         <title><?= $title ?></title>
@@ -32,9 +35,13 @@
        	<?= $content ?>
       </div> 	
 
+<<<<<<< HEAD
     	<footer></footer>
       <div id="copyright">
         © 2018
       </div>    
+=======
+    	<footer></footer>    
+>>>>>>> 778e927d816dc640271d8ca4c8748156f200111e
     </body>
 </html>

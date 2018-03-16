@@ -134,7 +134,11 @@ class CommentManager extends Manager
     	$request->bindValue(':chapterId', $chapterId, PDO::PARAM_INT);
    		$request->execute();
     
+<<<<<<< HEAD
     	$request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Comment');
+=======
+    	$request->setFetchMode( PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Comment');
+>>>>>>> 778e927d816dc640271d8ca4c8748156f200111e
     
     	$comments = $request->fetchAll();
     
