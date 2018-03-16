@@ -48,14 +48,14 @@ class CommentManager extends Manager
 		return $this->db->query('SELECT COUNT(*) FROM comments WHERE status = \'reported\'')->fetchColumn();
 	}
 
-	public function reportComment() 
+	public function reportComment($id) 
 	{
-		$this->db->exec('UPDATE comments SET status = \'reported\' WHERE id = :id');
+		$this->db->exec('UPDATE comments SET status = \'reported\' WHERE id =' .(int) $id);
 	}
 
-	public function ignoreReportedComment() 
+	public function ignoreReportedComment($id) 
 	{
-		$this->db->exec('UPDATE comments SET status = \'published\' WHERE id = :id');
+		$this->db->exec('UPDATE comments SET status = \'published\' WHERE id =' .(int) $id);
 	}
 
 	public function getUnique($id) 

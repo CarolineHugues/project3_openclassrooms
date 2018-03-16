@@ -34,13 +34,13 @@ class FrontendController {
 
 	public function addComment(Comment $comment, $chapterId)
 	{
-		$this->_commentManager->add(Comment /*$comment A retirer ?*/);
+		$this->_commentManager->add(Comment /*$comment A retirer*/);
 		$this->chapter($chapterId); //Actualisation de l'affichage du chapitre 
 	}
 
-	public function reportComment($chapterId)
+	public function reportComments($id, $chapterId)
 	{
-		$this->_commentManager->reportComment();
+		$this->_commentManager->reportComment($id);
 		$this->chapter($chapterId); 
 	}
 

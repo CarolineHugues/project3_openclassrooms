@@ -1,5 +1,5 @@
 <?php
-require_once 'Models/entity.php'; /*A rajouter ?*/
+require_once 'Models/entity.php'; /*A ajouter ? */
 
 class Chapter extends Entity 
 {

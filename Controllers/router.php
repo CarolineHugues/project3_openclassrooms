@@ -38,14 +38,16 @@ class Router
                        throw new Exception("Identifiant de chapitre non valide ou non défini"); 
                     }
                 }    
-                else if ($_POST['action'] == 'addComment') 
+                  else if ($_GET['action'] == 'addComment') 
                 {
-                    $this->_frontendController->addComment();
+                    $this->_frontendController->addComment(Comment, $chapterId);
                 }   
-                else if ($_GET['action'] == 'reportComment') 
+                else if ($_GET['action'] == 'reportComments') 
                 {
-                    $this->_frontendController->reportComment();
-                }    
+                    $chapterId = intval($_POST['chapterid']);
+                    $id = intval($_POST['id']);
+                    $this->_frontendController->reportComments($id, $chapterId);
+                }      
                 else 
                 {
                     throw new Exception("Action non valide");    
