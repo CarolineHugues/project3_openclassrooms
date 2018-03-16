@@ -1,9 +1,5 @@
 <?php
-<<<<<<< HEAD
-require_once 'Models/entity.php'; 
-=======
-require_once 'Models/entity.php'; /*A ajouter ? */
->>>>>>> 778e927d816dc640271d8ca4c8748156f200111e
+require_once 'Models/entity.php'; /*A rajouter ?*/
 
 class Chapter extends Entity 
 {

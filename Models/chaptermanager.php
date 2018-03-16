@@ -1,11 +1,6 @@
 <?php
-<<<<<<< HEAD
-require_once 'Models/manager.php';  
-require_once 'Models/chapter.php'; 
-=======
 require_once 'Models/manager.php';  /*A ajouter ? */
 require_once 'Models/chapter.php'; /*A ajouter ? */
->>>>>>> 778e927d816dc640271d8ca4c8748156f200111e
 
 class ChapterManager extends Manager 
 { 
@@ -88,11 +83,7 @@ class ChapterManager extends Manager
 		$request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Chapter');
 
 		$chapter = $request->fetch();
-<<<<<<< HEAD
 		
-=======
-
->>>>>>> 778e927d816dc640271d8ca4c8748156f200111e
 		$chapter->setAddDate(new DateTime($chapter->addDate()));
 		$chapter->setUpdateDate(new DateTime($chapter->updateDate()));
 		$chapter->setPublishedDate(new DateTime($chapter->publishedDate()));

@@ -1,6 +1,6 @@
 <?php
-require_once 'Models/manager.php';  
-require_once 'Models/comment.php'; 
+require_once 'Models/manager.php';  /*A ajouter ? */
+require_once 'Models/comment.php'; /*A ajouter ? */
 
 class CommentManager extends Manager 
 {
@@ -134,11 +134,7 @@ class CommentManager extends Manager
     	$request->bindValue(':chapterId', $chapterId, PDO::PARAM_INT);
    		$request->execute();
     
-<<<<<<< HEAD
     	$request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Comment');
-=======
-    	$request->setFetchMode( PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Comment');
->>>>>>> 778e927d816dc640271d8ca4c8748156f200111e
     
     	$comments = $request->fetchAll();
     
