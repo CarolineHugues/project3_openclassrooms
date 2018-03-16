@@ -9,7 +9,7 @@ abstract class Manager
 		$this->setDb($db);
 	}
 
-	public function setDb(PDO $db) 
+	public function setDb($db) 
 	{
 		$this->db = $db;
 	}

@@ -1,11 +1,11 @@
-<?php 
+<?php
 
 abstract class Entity
 {
 	protected $errors = [],
 			  $id;
 
-	public function __construct(array $data = []) 
+	public function __construct($data = []) 
 	{
 		if(!empty($data))
 		{
@@ -36,18 +36,18 @@ abstract class Entity
 
 	public function errors()
 	{
-		return this->errors;
+		return $this->errors;
 	}
 
 	public function id()
 	{
-		return this->id;
+		return $this->id;
 	}
 
 	// SETTERS
 
 	public function setId($id) 
 	{ 
-		$this->id = (int) id;
+		$this->id = (int) $id;
 	}
 }
