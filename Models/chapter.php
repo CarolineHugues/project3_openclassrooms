@@ -1,4 +1,5 @@
 <?php
+require_once 'Models/entity.php'; 
 
 class Chapter extends Entity 
 {
@@ -125,7 +126,7 @@ class Chapter extends Entity
 		return $this->_updateDate;
 	}
 
-	public function publishedDate() 
+	public function publishedDate()
 	{
 		return $this->_publishedDate;
 	}
@@ -134,5 +135,4 @@ class Chapter extends Entity
 	{
 		return $this->_status;
 	}
-
 }

@@ -1,7 +1,9 @@
 <?php
+require_once 'Models/manager.php';  
+require_once 'Models/chapter.php'; 
 
 class ChapterManager extends Manager 
-{
+{ 
 	public function add(Chapter $chapter) 
 	{
 		$request = $this->db->prepare('INSERT INTO chapters (title, author, content, excerpt, addDate, updateDate, publishedDate, status) VALUES(:title, :author, :content, :excerpt, NOW(), NOW(), NOW(), :status)');
@@ -78,16 +80,17 @@ class ChapterManager extends Manager
 
 		$request->execute();
 
-		$request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, '\Entity\Chapter');
+		$request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Chapter');
 
 		$chapter = $request->fetch();
-
-		$chapter->setAddDate(new DateTime($chapter->AddDate()));
+		
+		$chapter->setAddDate(new DateTime($chapter->addDate()));
 		$chapter->setUpdateDate(new DateTime($chapter->updateDate()));
 		$chapter->setPublishedDate(new DateTime($chapter->publishedDate()));
 
 		return $chapter;
 	}
+
 
 	public function getDraftsList($start = -1, $limit = -1) 
 	{
@@ -99,7 +102,7 @@ class ChapterManager extends Manager
 			}
 
 		$request = $this->db->query($sql);
-		$request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, '\Entity\Chapter');
+		$request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Chapter');
 
 		$DraftsList = $request->fetchAll();
 
@@ -125,7 +128,7 @@ class ChapterManager extends Manager
 			}
 
 		$request = $this->db->query($sql);
-		$request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, '\Entity\Chapter');
+		$request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Chapter');
 
 		$PublishedChaptersList = $request->fetchAll();
 
@@ -139,7 +142,8 @@ class ChapterManager extends Manager
 		$request->closeCursor();
 
 		return $PublishedChaptersList;
-	}
+    }
+
 
 	public function getList($start = -1, $limit = -1) 
 	{
@@ -151,7 +155,7 @@ class ChapterManager extends Manager
 			}
 
 		$request = $this->db->query($sql);
-		$request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, '\Entity\Chapter');
+		$request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Chapter');
 
 		$chaptersList = $request->fetchAll();
 
