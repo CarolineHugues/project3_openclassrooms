@@ -1,6 +1,4 @@
-<?php $title = $chapter->title . '- Billet simple pour l\'alaska';
-
-ob_start(); ?>
+<?php $this->_title = $chapter->title . ' - Billet simple pour l\'alaska'; ?>
 
 	<section class="post">
 		<header class="major">
@@ -63,9 +61,7 @@ ob_start(); ?>
 		</form>	
 	</section>	
 
-<?php $content = ob_get_clean(); 
 
-require('template.php'); ?>
 
 
 

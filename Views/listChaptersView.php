@@ -1,6 +1,4 @@
-<?php $title = 'Les chapitres - Billet simple pour l\'alaska'; 
-
-ob_start(); ?>
+<?php $this->_title = 'Les chapitres - Billet simple pour l\'alaska'; ?>
 
 	<section class="posts">
 		<?php foreach ($chapters as $chapter)
@@ -14,7 +12,3 @@ ob_start(); ?>
 		}
 		?>
 	</section> 
-
-<?php $content = ob_get_clean(); 
-
-require('template.php'); ?>
