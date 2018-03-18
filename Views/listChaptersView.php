@@ -1,3 +1,5 @@
+<?php $this->_currentNav = 'chapters'; ?>
+
 <?php $this->_title = 'Les chapitres - Billet simple pour l\'alaska'; ?>
 
 	<section class="posts">
