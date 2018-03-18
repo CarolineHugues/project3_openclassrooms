@@ -3,7 +3,8 @@
 class View {
 
   private $_file,
-          $_title;
+          $_title,
+          $_currentNav;
 
   public function __construct($action) 
   {
@@ -13,7 +14,7 @@ class View {
   public function generate($data) 
   {
     $content = $this->generateFile($this->_file, $data);
-    $view = $this->generateFile('Views/template.php', array('title' => $this->_title, 'content' => $content));
+    $view = $this->generateFile('Views/template.php', array('title' => $this->_title, 'currentNav' => $this->_currentNav,  'content' => $content));
     
     echo $view;
   }
