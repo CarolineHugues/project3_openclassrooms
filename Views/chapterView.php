@@ -44,27 +44,21 @@
 		<form method="post" action="?action=addComment">
 			<div class="field">
 				<label for="author">Nom</label>
-				<input id="name" name="author" type="text">
+				<input id="name" name="author" type="text" />
 			</div>
 			<div class="field">
 				<label for="authorMail">Mail</label>
-				<input id="mail" name="authorMail" type="text">
+				<input id="mail" name="authorMail" type="text" />
 			</div>
 			<div class="field">
 				<label for="content">Commentaire</label>
-				<textarea id="comment" name="content" rows="3"></textarea>
+				<textarea id="comment" name="content" rows="3" /></textarea>
 			</div>
-			<input type="hidden" name="id" value="<?= $chapter->id() ?>" />
+			<input type="hidden" name="chapterid" value="<?= $chapter->id() ?>" />
 			<ul class ="actions">
 				<li>
-					<input value="Laisser un commentaire" type="submit">
+					<input value="Laisser un commentaire" type="submit" />
 				</li>
 			</ul>
 		</form>	
 	</section>	
-
-
-
-
-
-
