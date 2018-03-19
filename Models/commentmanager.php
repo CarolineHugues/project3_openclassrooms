@@ -130,7 +130,7 @@ class CommentManager extends Manager
   			throw new \InvalidArgumentException('L\'identifiant du chapitre passé doit être un nombre entier valide');
   		}
 
-  		$request = $this->db->prepare('SELECT id, author, content, publishedDate, authorMail, status, chapterId FROM comments WHERE chapterId = :chapterId');
+  		$request = $this->db->prepare('SELECT id, author, content, DATE_FORMAT(publishedDate, \'%d/%m/%Y à %Hh%i\') AS publishedDate_fr, authorMail, status, chapterId FROM comments WHERE chapterId = :chapterId');
     	$request->bindValue(':chapterId', $chapterId, PDO::PARAM_INT);
    		$request->execute();
     

@@ -4,7 +4,7 @@
 
 	<section class="post">
 		<header class="major">
-			<span class="date"><?= $chapter->publishedDate/*->format('d m Y à H i')*/ ?></span>
+			<span class="date"><?= $chapter->publishedDate_fr ?></span>
 			<h2><?= $chapter->title ?></h2>
 			<p>Par <?= $chapter->author ?></p>
 		</header> 
@@ -26,7 +26,7 @@
 		{ 
 		?>
 			<p><?= htmlspecialchars($comment->author) ?></p>
-			<p><?= $comment->publishedDate ?></p>
+			<p><?= $comment->publishedDate_fr ?></p>
 			<p><?= htmlspecialchars(nl2br($comment->content)) ?></p>
 			<p><?= $comment->status ?></p>
 			<form method="post" action="?action=reportComments">

@@ -74,7 +74,7 @@ class ChapterManager extends Manager
 
 	public function getUnique($id) 
 	{
-		$request = $this->db->prepare('SELECT id, title, author, content, excerpt, addDate, updateDate, publishedDate, status FROM chapters WHERE id = :id');
+		$request = $this->db->prepare('SELECT id, title, author, content, excerpt, addDate, updateDate,  DATE_FORMAT(publishedDate, \'%d/%m/%Y à %Hh%i\') AS publishedDate_fr, status FROM chapters WHERE id = :id');
 
 		$request->bindValue(':id', (int) $id, PDO::PARAM_INT);
 
