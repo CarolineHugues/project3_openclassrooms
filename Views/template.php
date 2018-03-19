@@ -14,7 +14,17 @@
     </noscript>
 
     <body>
-      <div id="wrapper">
+      <div id="wrapper" class="fade-in">
+        <div id="intro">
+          <h1>Billet simple pour
+            <br> l'Alaska 
+          </h1>
+          <ul class="actions">
+            <li>
+              <a class="button icon solo fa-arrow-down scrolly" href="#header">Continue</a>
+            </li>
+          </ul>
+        </div>
     	  <header id ="header">
     		  <h1><a class="logo" href="index.php">Billet simple pour l'Alaska</a></h1>
         </header>
@@ -39,7 +49,7 @@
 
     	  <footer></footer>
         <div id="copyright">
-          © 2018
+          © 2018 - Jean Forteroche
         </div> 
         <a id="navPanelToggle" class="alt" href="#navPanel">Menu</a>
       </div>   
