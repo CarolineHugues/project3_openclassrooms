@@ -40,7 +40,9 @@ class Router
                 }    
                   else if ($_GET['action'] == 'addComment') 
                 {
-                    $this->_frontendController->addComment(Comment, $chapterId);
+                    $comment = new Comment(['author' => $_POST['author'], 'authorMail' => $_POST['authorMail'], 'content' => $_POST['content'], 'chapterId' => $_POST['chapterid']]);
+                    $chapterId = intval($_POST['chapterid']);
+                    $this->_frontendController->addComment($comment, $chapterId);
                 }   
                 else if ($_GET['action'] == 'reportComments') 
                 {
