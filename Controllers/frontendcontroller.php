@@ -19,7 +19,7 @@ class FrontendController {
 
 	public function listChapters()
 	{
-    	$chapters = $this->_chapterManager->getPublishedList(0,3);
+    	$chapters = $this->_chapterManager->getPublishedList(0,4);
     	$view = new View('listChapters');
     	$view->generate(array('chapters' => $chapters));
 	}
