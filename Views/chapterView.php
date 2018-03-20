@@ -29,7 +29,11 @@
 			<p><?= htmlspecialchars($comment->author) ?></p>
 			<p><?= $comment->publishedDate_fr ?></p>
 			<p><?= htmlspecialchars(nl2br($comment->content)) ?></p>
-			<p><?= $comment->status ?></p>
+			<p><?php if ($comment->status == 'reported') 
+			{
+				echo 'Ce commentaire a été signalé !';
+			}
+			?>
 			</div>
 			<form method="post" action="?action=reportComments">
 				<input type="hidden" name="id" value="<?= $comment->id() ?>" />
