@@ -34,8 +34,23 @@ class FrontendController {
 
 	public function addComment($comment, $chapterId)
 	{
-		$this->_commentManager->add($comment);
-		$this->chapter($chapterId); //Actualisation de l'affichage du chapitre 
+		if (empty($_POST['author']))
+       	{
+            echo 'Vous devez renseigner votre nom !';
+        }
+       	else if (empty($_POST['authorMail']))
+        {
+            echo 'Vous devez renseigner votre mail !';
+        }
+        else if (empty($_POST['content']))
+        {
+            echo 'Vous devez renseigner le contenu de votre commentaire !';
+        }
+        else 
+        {
+			$this->_commentManager->add($comment);
+			$this->chapter($chapterId); //Actualisation de l'affichage du chapitre
+		}	 
 	}
 
 	public function reportComments($id, $chapterId)
