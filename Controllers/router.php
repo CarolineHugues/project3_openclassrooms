@@ -40,24 +40,9 @@ class Router
                 }    
                   else if ($_GET['action'] == 'addComment') 
                 {
-                    if (empty($_POST['author']))
-                    {
-                        echo 'Vous devez renseigner votre nom !';
-                    }
-                    else if (empty($_POST['authorMail']))
-                    {
-                        echo 'Vous devez renseigner votre mail !';
-                    }
-                    else if (empty($_POST['content']))
-                    {
-                        echo 'Vous devez renseigner le contenu de votre commentaire !';
-                    }
-                    else 
-                    {
-                        $comment = new Comment(['author' => htmlspecialchars($_POST['author']), 'authorMail' => htmlspecialchars($_POST['authorMail']), 'content' => htmlspecialchars($_POST['content']), 'chapterId' => $_POST['chapterid']]);
-                        $chapterId = intval($_POST['chapterid']);
-                        $this->_frontendController->addComment($comment, $chapterId);
-                    }
+                    $comment = new Comment(['author' => $_POST['author'], 'authorMail' => $_POST['authorMail'], 'content' => $_POST['content'], 'chapterId' => $_POST['chapterid']]);
+                    $chapterId = intval($_POST['chapterid']);
+                    $this->_frontendController->addComment($comment, $chapterId);
                 }   
                 else if ($_GET['action'] == 'reportComments') 
                 {
