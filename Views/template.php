@@ -15,6 +15,9 @@
 
     <body>
       <div id="wrapper" class="fade-in">
+        <?php if ($currentNav == 'home') 
+        { 
+        ?>
         <div id="intro">
           <h1>Billet simple pour
             <br> l'Alaska 
@@ -25,6 +28,9 @@
             </li>
           </ul>
         </div>
+        <?php 
+        } 
+        ?>
     	  <header id ="header">
     		  <h1><a class="logo" href="index.php">Billet simple pour l'Alaska</a></h1>
         </header>
