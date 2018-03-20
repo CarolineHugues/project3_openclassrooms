@@ -18,16 +18,16 @@
         <?php if ($currentNav == 'home') 
         { 
         ?>
-        <div id="intro">
-          <h1>Billet simple pour
+          <div id="intro">
+            <h1>Billet simple pour
             <br> l'Alaska 
-          </h1>
-          <ul class="actions">
-            <li>
-              <a class="button icon solo fa-arrow-down scrolly" href="#header">Continue</a>
-            </li>
-          </ul>
-        </div>
+            </h1>
+            <ul class="actions">
+              <li>
+                <a class="button icon solo fa-arrow-down scrolly" href="#header">Continue</a>
+              </li>
+            </ul>
+          </div>
         <?php 
         } 
         ?>
@@ -53,7 +53,11 @@
        	  <?= $content ?>
         </div> 	
 
-    	  <footer></footer>
+    	  <footer id="footer">
+          <p>
+            <i>Billet simple pour l'Alaska</i> - un livre de Jean Forteroche.
+          </p>
+        </footer>
         <div id="copyright">
           © 2018 - Jean Forteroche
         </div> 
