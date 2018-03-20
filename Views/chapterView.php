@@ -25,21 +25,21 @@
 		<?php foreach ($comments as $comment)
 		{ 
 		?>
-			<div class="box">
-			<p><?= htmlspecialchars($comment->author) ?></p>
-			<p><?= $comment->publishedDate_fr ?></p>
-			<p><?= htmlspecialchars(nl2br($comment->content)) ?></p>
-			<p><?php if ($comment->status == 'reported') 
-			{
-				echo 'Ce commentaire a été signalé !';
-			}
-			?>
+			<div class="box-comment">
+				<p><b><?= htmlspecialchars($comment->author) ?></b> le <i><?= $comment->publishedDate_fr ?></i></p>
+				<p><?= htmlspecialchars(nl2br($comment->content)) ?></p>
+				<p class="reported"><?php if ($comment->status == 'reported') 
+				{
+					echo 'Ce commentaire a été signalé !';
+				}
+				?>
+				</p>
+				<form id="reported-button" method="post" action="?action=reportComments">
+					<input type="hidden" name="id" value="<?= $comment->id() ?>" />
+					<input type="hidden" name="chapterid" value="<?= $comment->chapterId ?>" />
+					<input id="reportedButton" class="button small" value="Signaler ce commentaire" type="submit">
+				</form>
 			</div>
-			<form method="post" action="?action=reportComments">
-				<input type="hidden" name="id" value="<?= $comment->id() ?>" />
-				<input type="hidden" name="chapterid" value="<?= $comment->chapterId ?>" />
-				<input value="Signaler ce commentaire" type="submit">
-			</form>
 		<?php			
 		}
 		?>
