@@ -12,9 +12,9 @@ class CommentManager extends Manager
 			{
 				$request = $this->db->prepare('INSERT INTO comments (author, content, publishedDate, authorMail, status, chapterId) VALUES(:author, :content, NOW(), :authorMail, :status, :chapterId)');
 
-				$request->bindValue(':author', $comment->author());
-				$request->bindValue(':content', $comment->content());
-				$request->bindValue(':authorMail', $comment->authorMail());
+				$request->bindValue(':author', htmlspecialchars($comment->author()));
+				$request->bindValue(':content', htmlspecialchars($comment->content()));
+				$request->bindValue(':authorMail', htmlspecialchars($comment->authorMail()));
 				$request->bindValue(':status', $comment->status());
 				$request->bindValue(':chapterId', $comment->chapterId(), PDO::PARAM_INT);
 
