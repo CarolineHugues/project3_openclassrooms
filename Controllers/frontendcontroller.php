@@ -3,7 +3,7 @@
 require_once 'Models/chaptermanager.php';
 require_once 'Models/commentmanager.php';
 require_once 'Models/pdofactory.php';
-require_once 'Views/frontend/view.php';
+require_once 'Views/Frontend/frontendview.php';
 
 
 class FrontendController {
@@ -20,7 +20,7 @@ class FrontendController {
 	public function listChapters()
 	{
     	$chapters = $this->_chapterManager->getPublishedList(0,4);
-    	$view = new View('listChapters');
+    	$view = new FrontendView('listChapters');
     	$view->generate(array('chapters' => $chapters));
 	}
 
@@ -28,7 +28,7 @@ class FrontendController {
 	{
 		$chapter = $this->_chapterManager->getUnique($id);
     	$comments = $this->_commentManager->getListOf($chapter->id());
-    	$view = new View('chapter');
+    	$view = new FrontendView('chapter');
     	$view->generate(array('chapter' => $chapter, 'comments' => $comments));
 	}
 
@@ -61,7 +61,7 @@ class FrontendController {
 
 	public function home()
 	{
-		$view = new View('home');
+		$view = new FrontendView('home');
 		$view->generate(array('home'));
 	}
 

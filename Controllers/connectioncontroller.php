@@ -2,6 +2,7 @@
 
 require_once 'Models/connectionmanager.php';
 require_once 'Models/pdofactory.php';
+require_once 'Views/Backend/Backendview.php';
 
 
 class ConnectionController 
@@ -23,7 +24,8 @@ class ConnectionController
 	{
 		if ($this->_connectionManager->isValid($login, $password))
 		{
-			require 'Views/Backend/adminView.php';
+			$view = new BackendView('admin');
+    		$view->generate(array('admin'));
 		}
 		else
 		{
