@@ -1,6 +1,6 @@
-<?php $this->_title = $chapter->title . ' - Billet simple pour l\'alaska'; ?>
+<?php $this->title = $chapter->title . ' - Billet simple pour l\'alaska'; ?>
 
-<?php $this->_currentNav = 'chapter'; ?>
+<?php $this->currentNav = 'chapter'; ?>
 
 	<section class="post">
 		<header class="major">

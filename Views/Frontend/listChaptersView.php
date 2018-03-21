@@ -1,6 +1,6 @@
-<?php $this->_currentNav = 'chapters'; ?>
+<?php $this->currentNav = 'chapters'; ?>
 
-<?php $this->_title = 'Les chapitres - Billet simple pour l\'alaska'; ?>
+<?php $this->title = 'Les chapitres - Billet simple pour l\'alaska'; ?>
 
 	<section class="posts">
 		<?php foreach ($chapters as $chapter)

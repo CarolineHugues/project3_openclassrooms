@@ -1,6 +1,6 @@
-<?php $this->_title = 'Billet simple pour l\'alaska - Jean Forteroche'; ?>
+<?php $this->title = 'Billet simple pour l\'alaska - Jean Forteroche'; ?>
 
-<?php $this->_currentNav = 'home'; ?>
+<?php $this->currentNav = 'home'; ?>
 
 	<header class="major">
 		<h2>Présentation</h2>

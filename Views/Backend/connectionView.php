@@ -3,6 +3,7 @@
 	<head>
 		<title>Connexion à l'administration du site de Jean Forteroche</title>
 		<meta charset="utf-8" />
+		<link href="public/css/styleBackend.css" rel="stylesheet" /> 
 	</head>
 	<body>
 		<h1>Connexion</h1>

@@ -6,7 +6,7 @@
         <title><?= $title ?></title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-        <link href="public/styleFrontend.css" rel="stylesheet" /> 
+        <link href="public/css/styleFrontend.css" rel="stylesheet" /> 
         <link href="public/massively-master/massively-master/assets/css/main.css" rel="stylesheet" /> 
     </head>
     <noscript>
