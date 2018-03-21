@@ -3,7 +3,7 @@
 require_once 'Models/chaptermanager.php';
 require_once 'Models/commentmanager.php';
 require_once 'Models/pdofactory.php';
-require_once 'Views/view.php';
+require_once 'Views/frontend/view.php';
 
 
 class FrontendController {
