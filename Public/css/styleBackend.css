@@ -1,0 +1,25 @@
+/* -------------------------------------- Admin page ----------------------- */
+
+#headerAdmin
+{
+	text-align: center;
+	margin-bottom: 50px;
+}
+
+.sectionAdmin
+{
+	border-top: solid 2px #eeeeee;
+}
+
+/* --------------------------- Page Add or update a chapter ------------------- */
+
+.chapterForm 
+{
+	margin: 10px 20px 10px 20px;
+}
+
+.titleField 
+{
+	width: 100%;
+	margin-bottom: 10px;
+}
