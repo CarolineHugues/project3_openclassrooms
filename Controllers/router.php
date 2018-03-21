@@ -1,12 +1,14 @@
 <?php
 require_once 'Controllers/frontendcontroller.php';
 require_once 'Controllers/connectioncontroller.php';
+require_once 'Controllers/backendcontroller.php';
 
 
 class Router 
 {
     private $_frontendController,
             $_connectionController,
+            $_backendController,
             $_error;
 
     public function error()
@@ -18,6 +20,7 @@ class Router
     {
         $this->_frontendController = new FrontendController ();
         $this->_connectionController = new ConnectionController ();
+        $this->_backendController = new BackendController ();
     }
 
     public function routerRequest() 
@@ -70,6 +73,15 @@ class Router
                     {
                         $this->_connectionController->connectionAccess();
                     }
+                }   
+                else if ($_GET['action'] == 'writeChapter') 
+                {
+                    $this->_backendController->writeChapter();
+                } 
+                else if ($_GET['action'] == 'addChapter') 
+                {
+                    $chapter = new Chapter(['title' => $_POST['title'], 'content' => $_POST['content'], 'excerpt' => $_POST['excerpt']]);
+                    $this->_backendController->addChapter($chapter);
                 }   
                 else 
                 {
