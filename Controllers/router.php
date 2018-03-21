@@ -1,10 +1,13 @@
 <?php
 require_once 'Controllers/frontendcontroller.php';
+require_once 'Controllers/connectioncontroller.php';
+
 
 class Router 
 {
-    private $_frontendController;
-    private $_error;
+    private $_frontendController,
+            $_connectionController,
+            $_error;
 
     public function error()
     {
@@ -14,6 +17,7 @@ class Router
     public function __construct() 
     {
         $this->_frontendController = new FrontendController ();
+        $this->_connectionController = new ConnectionController ();
     }
 
     public function routerRequest() 
@@ -49,7 +53,24 @@ class Router
                     $chapterId = intval($_POST['chapterid']);
                     $id = intval($_POST['id']);
                     $this->_frontendController->reportComments($id, $chapterId);
-                }      
+                }   
+                else if ($_GET['action'] == 'connectionAccess') 
+                {
+                    $this->_connectionController->connectionAccess();
+                }  
+                else if ($_GET['action'] == 'adminAccess') 
+                {
+                    if (isset($_POST['login']) AND isset($_POST['password']))
+                    {
+                        $login = $_POST['login'];
+                        $password = $_POST['password'];
+                        $this->_connectionController->adminAccess($login, $password);
+                    }
+                    else 
+                    {
+                        $this->_connectionController->connectionAccess();
+                    }
+                }   
                 else 
                 {
                     throw new Exception("Action non valide");    
