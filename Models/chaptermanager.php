@@ -21,7 +21,7 @@ class ChapterManager extends Manager
 
 	public function update(Chapter $chapter) 
 	{
-		$request = $this->db->prepare('UPDATE chapters SET title = :title, author = :author, content = :content, excerpt = :excerpt, updateDate = NOW(), publishedDate = NOW(), status = :status WHERE id = :id');
+		$request = $this->db->prepare('UPDATE chapters SET title = :title, author = :author, content = :content, excerpt = :excerpt, updateDate = NOW(), status = :status WHERE id = :id');
 
 		$request->bindValue(':title', $chapter->title());
 		$request->bindValue(':author', $chapter->author());
@@ -48,13 +48,13 @@ class ChapterManager extends Manager
 		}
 		else
 		{
-			throw new RuntimeException('Le chapitre doit être valide pour être enregistrée');
+			throw new RuntimeException('Le chapitre doit être valide pour être enregistré');
 		}
 	}
 
-	public function publish(Chapter $chapter) 
+	public function publish($id) 
 	{
-		$this->db->exec('UPDATE chapters SET status = \'published\' WHERE id = :id');
+		$this->db->exec('UPDATE chapters SET status = \'published\', publishedDate = NOW() WHERE id = '.(int) $id);
 	}
 
 	public function countDrafts() 
@@ -94,7 +94,7 @@ class ChapterManager extends Manager
 
 	public function getDraftsList($start = -1, $limit = -1) 
 	{
-		$sql = 'SELECT id, title, author, content, excerpt, addDate, updateDate, publishedDate, status FROM chapters WHERE status = \'draft\' ORDER BY id DESC';
+		$sql = 'SELECT id, title, author, content, excerpt, DATE_FORMAT(addDate, \'%d/%m/%Y à %Hh%i\') AS addDate_fr, DATE_FORMAT(updateDate, \'%d/%m/%Y à %Hh%i\') AS updateDate_fr, publishedDate, status FROM chapters WHERE status = \'draft\' ORDER BY id DESC';
 
 		if ($start != -1 || $limit != -1)
 			{
@@ -120,7 +120,7 @@ class ChapterManager extends Manager
 
 	public function getPublishedList($start = -1, $limit = -1) 
 	{
-		$sql = 'SELECT id, title, author, content, excerpt, addDate, updateDate, publishedDate, status FROM chapters WHERE status = \'published\' ORDER BY id DESC';
+		$sql = 'SELECT id, title, author, content, excerpt, DATE_FORMAT(addDate, \'%d/%m/%Y à %Hh%i\') AS addDate_fr, DATE_FORMAT(updateDate, \'%d/%m/%Y à %Hh%i\') AS updateDate_fr, DATE_FORMAT(publishedDate, \'%d/%m/%Y à %Hh%i\') AS publishedDate_fr, status FROM chapters WHERE status = \'published\' ORDER BY id DESC';
 
 		if ($start != -1 || $limit != -1)
 			{
