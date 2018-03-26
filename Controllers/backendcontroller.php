@@ -20,15 +20,15 @@ class BackendController
 
   public function addChapter()
   {    
-    $view = new BackendView('saveChapter');
-    $view->generate(array('saveChapter'));
+    $view = new BackendView('writeChapter');
+    $view->generate(array('writeChapter'));
   }
 
  	public function updateChapter($id) 
  	{
     $chapter = $this->_chapterManager->getUnique($id);
-    $view = new BackendView('saveChapter');
-    $view->generate(array('saveChapter', 'chapter' => $chapter));
+    $view = new BackendView('writeChapter');
+    $view->generate(array('writeChapter', 'chapter' => $chapter));
   }
 
   public function saveChapter($chapter)
