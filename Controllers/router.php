@@ -76,13 +76,38 @@ class Router
                 }   
                 else if ($_GET['action'] == 'writeChapter') 
                 {
-                    $this->_backendController->writeChapter();
+                    if (isset($_POST['id']))
+                    {
+                        $id = $_POST['id'];
+                        $this->_backendController->updateChapter($id);
+                    }
+                    else
+                    {
+                        $this->_backendController->addChapter();
+                    }
                 } 
-                else if ($_GET['action'] == 'addChapter') 
+                else if ($_GET['action'] == 'saveChapter') 
                 {
-                    $chapter = new Chapter(['title' => $_POST['title'], 'content' => $_POST['content'], 'excerpt' => $_POST['excerpt']]);
-                    $this->_backendController->addChapter($chapter);
+                    if (isset($_POST['id']))
+                    {
+                       $chapter = new Chapter(['id' => $_POST['id'],'title' => $_POST['title'], 'content' => $_POST['content'], 'excerpt' => $_POST['excerpt'], 'status' => $_POST['status']]);
+                    }
+                    else 
+                    {
+                        $chapter = new Chapter(['title' => $_POST['title'], 'content' => $_POST['content'], 'excerpt' => $_POST['excerpt']]);  
+                    }
+                    $this->_backendController->saveChapter($chapter);
                 }   
+                else if ($_GET['action'] == 'publishChapter')
+                {
+                    $id = $_POST['id'];
+                    $this->_backendController->publishChapter($id);
+                }
+                else if ($_GET['action'] == 'deleteChapter') 
+                {
+                    $id = $_POST['id'];
+                    $this->_backendController->deleteChapter($id);
+                }
                 else 
                 {
                     throw new Exception("Action non valide");    
