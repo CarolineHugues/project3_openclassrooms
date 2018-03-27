@@ -15,7 +15,7 @@
         <?php if(isset($chapter) && !$chapter->isNew())
         {
         ?>
-            <input type="hidden" name="status" value="published" />
+            <input type="hidden" name="status" value="<?= $chapter->status ?>" />
             <input type="hidden" name="id" value="<?= $chapter->id() ?>" />
             <input type="submit" value="Modifier" name="modify" />
         <?php

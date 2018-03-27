@@ -43,6 +43,11 @@ class CommentManager extends Manager
 		return $this->db->query('SELECT COUNT(*) FROM comments')->fetchColumn(); 
 	}
 
+	public function countPublishedComments() 
+	{
+		return $this->db->query('SELECT COUNT(*) FROM comments WHERE status = \'published\'')->fetchColumn();
+	}
+
 	public function countReportedComments() 
 	{
 		return $this->db->query('SELECT COUNT(*) FROM comments WHERE status = \'reported\'')->fetchColumn();
@@ -101,7 +106,7 @@ class CommentManager extends Manager
 
 	public function getReportedList($start = -1, $limit = -1) 
 	{
-		$sql = 'SELECT id, author, content, publishedDate, authorMail, status FROM comments WHERE status = \'reported\' ORDER BY id DESC';
+		$sql = 'SELECT id, author, content, DATE_FORMAT(publishedDate, \'%d/%m/%Y à %Hh%i\') AS publishedDate_fr, authorMail, status, chapterId FROM comments WHERE status = \'reported\' ORDER BY id DESC';
 
 		if ($start != -1 || $limit != -1)
 			{
@@ -123,6 +128,30 @@ class CommentManager extends Manager
 		return $reportedList;
 	}
 
+	public function getPublishedList($start = -1, $limit = -1) 
+	{
+		$sql = 'SELECT id, author, content, DATE_FORMAT(publishedDate, \'%d/%m/%Y à %Hh%i\') AS publishedDate_fr, authorMail, status, chapterId FROM comments WHERE status = \'published\' ORDER BY id DESC';
+
+		if ($start != -1 || $limit != -1)
+			{
+				$sql .= ' LIMIT '.(int) $limit.' OFFSET '.(int) $start;
+			}
+
+		$request = $this->db->query($sql);
+		$request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Comment');
+
+		$publishedList = $request->fetchAll();
+
+		foreach ($publishedList as $comment)
+		{
+			$comment->setPublishedDate(new DateTime($comment->publishedDate()));
+		}
+
+		$request->closeCursor();
+
+		return $publishedList;
+	}
+
 	public function getListOf($chapterId)
   	{
   		if (!ctype_digit($chapterId))
@@ -140,5 +169,4 @@ class CommentManager extends Manager
     
    		return $comments;
   	}
-
 }
