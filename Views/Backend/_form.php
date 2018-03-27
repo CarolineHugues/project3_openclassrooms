@@ -15,7 +15,43 @@
         <?php if(isset($chapter) && !$chapter->isNew())
         {
         ?>
-            <input type="hidden" name="status" value="<?= $chapter->status ?>" />
+            <fieldset>
+                <legend>Enregistrer le chapitre : </legend>
+                <div>
+                    <?php if ($chapter->status == 'published')
+                    {
+                    ?>
+                        <input type="radio" id="published" name="status" value="published" checked>
+                        <label for="published">Publié</label> 
+                    <?php
+                    }
+                    else
+                    {
+                    ?>
+                        <input type="radio" id="draft" name="status" value="draft" checked>
+                        <label for="draft">Brouillon</label>
+                    <?php   
+                    }
+                    ?>
+                </div>
+                <div>
+                    <?php if ($chapter->status == 'published')
+                    {
+                    ?>
+                        <input type="radio" id="draft" name="status" value="draft">
+                        <label for="draft">Brouillon</label>
+                    <?php
+                    }
+                    else
+                    {
+                    ?>
+                        <input type="radio" id="published" name="status" value="published">
+                        <label for="published">Publié</label> 
+                    <?php   
+                    }
+                    ?>
+                </div>
+            </fieldset>
             <input type="hidden" name="id" value="<?= $chapter->id() ?>" />
             <input type="submit" value="Modifier" name="modify" />
         <?php
@@ -23,6 +59,17 @@
         else
         {
         ?>
+            <fieldset>
+                <legend>Enregistrer le chapitre : </legend>
+                <div>
+                    <input type="radio" id="draft" name="status" value="draft" checked>
+                    <label for="draft">Brouillon</label>
+                </div>
+                <div>
+                    <input type="radio" id="published" name="status" value="published">
+                    <label for="published">Publié</label>
+                </div>
+            </fieldset>
             <input type="submit" value="Enregistrer" />
         <?php
         } 

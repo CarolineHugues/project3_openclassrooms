@@ -1,20 +1,16 @@
 <?php $this->title = 'Le chapitre a été sauvegardé'; ?>
 
-<p>Le chapitre a été sauvegardé !</p>
 <?php if ($chapter->status == 'draft')
 {
 ?>
-    <p>Voulez-vous le publier ?</p>
-    <form action="?action=publishChapter" method="post">
-        <input type="hidden" name="id" value="<?= $chapter->id() ?>" />
-        <input type="submit" value="Oui" name="publish" />
-    </form>
-    <a href="?action=adminAccess"><button>Non</button></a>
+    <p>Le chapitre a été enregistré !</p>
 <?php 
 }
-else
+else if ($chapter->status == 'published')
 {
 ?>
-    <a href="?action=adminAccess"><button>Retour à l'accueil de l'administration du site</button></a>
+	<p>Le chapitre a été enregistré et publié !</p>
 <?php
 }
+?>
+<a href="?action=adminAccess"><button>Retour à l'accueil de l'administration du site</button></a>
