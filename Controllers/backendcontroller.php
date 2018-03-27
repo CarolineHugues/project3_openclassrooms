@@ -48,16 +48,38 @@ class BackendController
     else 
     {
       $this->_chapterManager->save($chapter);
+      $id = $_POST['id'];
+      $chapter = $this->_chapterManager->getUnique($id);
+      $view = new BackendView('saveChapter');
+      $view->generate(array('saveChapter', 'chapter' => $chapter));
 		}
   }
 
   public function publishChapter($id)
   {
     $this->_chapterManager->publish($id);
+    $view = new BackendView('publishChapter');
+    $view->generate(array('publishChapter'));
   }
 
   public function deleteChapter($id)
   {
     $this->_chapterManager->delete($id);
+    $view = new BackendView('deleteChapter');
+    $view->generate(array('deleteChapter'));
+  }
+
+  public function ignoreReportedComment($id)
+  {
+    $this->_commentManager->ignoreReportedComment($id);
+    $view = new BackendView('ignoreReportedComment');
+    $view->generate(array('ignoreReportedComment'));
+  }
+
+  public function deleteComment($id)
+  {
+    $this->_commentManager->delete($id);
+    $view = new BackendView('deleteComment');
+    $view->generate(array('deleteComment'));
   }
 }

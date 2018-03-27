@@ -32,8 +32,12 @@ class ConnectionController
 			$draftsChapters = $this->_chapterManager->getDraftsList(0,10);
 			$nbPublishedChapters = $this->_chapterManager->countPublished();
 			$nbDraftsChapters = $this->_chapterManager->countDrafts();
+			$comments = $this->_commentManager->getPublishedList(0,10);
+			$reportedComments = $this->_commentManager->getReportedList(0,10);
+			$nbPublishedComments = $this->_commentManager->countPublishedComments();
+			$nbReportedComments = $this->_commentManager->countReportedComments();
 			$view = new BackendView('admin');
-    		$view->generate(array('admin', 'chapters' => $chapters, 'draftsChapters' => $draftsChapters, 'nbPublishedChapters' => $nbPublishedChapters, 'nbDraftsChapters' => $nbDraftsChapters));
+    		$view->generate(array('admin', 'chapters' => $chapters, 'draftsChapters' => $draftsChapters, 'nbPublishedChapters' => $nbPublishedChapters, 'nbDraftsChapters' => $nbDraftsChapters, 'comments' => $comments, 'reportedComments' => $reportedComments, 'nbPublishedComments' => $nbPublishedComments, 'nbReportedComments' => $nbReportedComments));
 		}
 		else
 		{

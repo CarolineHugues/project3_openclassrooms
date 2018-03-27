@@ -108,6 +108,16 @@ class Router
                     $id = $_POST['id'];
                     $this->_backendController->deleteChapter($id);
                 }
+                else if ($_GET['action'] == 'ignoreReportedComment') 
+                {
+                    $id = $_POST['id'];
+                    $this->_backendController->ignoreReportedComment($id);
+                }
+                else if ($_GET['action'] == 'deleteComment') 
+                {
+                    $id = $_POST['id'];
+                    $this->_backendController->deleteComment($id);
+                }
                 else 
                 {
                     throw new Exception("Action non valide");    
