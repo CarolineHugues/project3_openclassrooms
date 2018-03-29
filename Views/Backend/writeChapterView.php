@@ -4,7 +4,7 @@
     ?>
 
     	<section class="sectionAdmin">
-			<h3>Modifier le chapitre</h3>
+			<h3 class="titleAdmin">Modifier le chapitre</h3>
 		
     <?php
     }
@@ -14,7 +14,7 @@
     ?>
 
     	<section class="sectionAdmin">
-			<h3>Ajouter un chapitre</h3>
+			<h3 class="titleAdmin">Ajouter un chapitre</h3>
 
     <?php
     } 

@@ -1,4 +1,6 @@
 <?php $this->title = 'Le commentaire a été supprimé'; ?>
 
-<p>Le commentaire a été supprimé ! </p>
-<a href="?action=adminAccess"><button>Retour à l'accueil de l'administration du site</button></a>
+<section class="confirmationPage">
+	<p class="confirmationPageMessage">Le commentaire a été supprimé ! </p>
+	<a href="?action=adminAccess"><button class="buttonAdmin2">Retour à l'accueil de l'administration du site</button></a>
+</section>

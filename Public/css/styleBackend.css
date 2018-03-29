@@ -1,25 +1,380 @@
-/* -------------------------------------- Admin page ----------------------- */
+h1
+{
+	font-size: 45px;
+	margin-top: 50px;
+}
+
+h2
+{
+	font-size: 24px;
+}
+
+h3
+{
+	font-size: 30px;
+	color: #22427C;
+	text-transform: uppercase;
+	font-family: "Source Sans Pro", Helvetica, sans-serif;
+	font-weight: 900;
+	line-height: 1.5;
+	letter-spacing: 0.075em;
+	margin-top:-15px;
+	margin-bottom:40px;
+	background: #00CCCB;
+	padding-top: 10px;
+	padding-bottom:10px;
+	max-width: 500px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+h4
+{
+	font-size: 14px;
+	text-transform: uppercase;
+	font-family: "Source Sans Pro", Helvetica, sans-serif;
+	font-weight: 900;
+	line-height: 1.5;
+	letter-spacing: 0.060em;
+}
+
+h5
+{
+	font-size: 18px;
+	margin-bottom: 2px;
+}
+
+h6
+{
+	font-size: 15px;
+}
+
+a
+{
+	text-decoration: none;
+	color: #22427C;	
+}
+
+a:hover 
+{
+	color: #00CCCB;
+}
+
+ul li 
+{
+	list-style: none;
+}
+
+/* ----------- Buttons and form ----------- */
+
+label 
+{
+	font-weight: bold;
+}
+
+input, button
+{
+	cursor: pointer;
+}
+
+.buttonAdmin
+{
+	border-radius:12px 0 12px 0;
+	border:none;
+	font-size: 12px;
+	font-weight: bold;
+	color: #F0FFFF;
+	background: #00CCCB;
+	padding:6px 10px 6px 10px;
+	margin-right: 5px;
+	margin-bottom:15px;
+	box-shadow:1px 1px 3px #999;
+}
+
+.buttonAdmin:hover 
+{
+	background: #F0FFFF;
+	color:#00CCCB;
+	padding:5px 9px 5px 9px;
+	border:2px solid #00CCCB;
+	box-shadow: none; 
+}
+
+
+/* -------------------------------------- Connection page / Confirmation Pages ----------------------- */
+
+#connectionPage h2
+{
+	font-style: italic;
+	margin-bottom: 90px;
+}
+
+#connectionFields
+{
+	max-width: 350px;
+	text-align:right;
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: 30px;
+	padding-bottom: 15px;
+	border-color: #22427C;
+}
+
+#connectionFields legend 
+{
+	font-weight: bold;
+	color: #22427C;
+	font-size: 18.5px;
+}
+
+#inputLogin
+{
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+.buttonAdmin2
+{
+	border-radius:12px 0 12px 0;
+	border:none;
+	font-size: 14px;
+	font-weight: bold;
+	color: #F0FFFF;
+	background: #00CCCB;
+	padding:6px 10px 6px 10px;
+	margin-right: 5px;
+	margin-bottom:15px;
+	box-shadow:1px 1px 3px #999;
+}
+
+.buttonAdmin2:hover 
+{
+	background: #F0FFFF;
+	color:#00CCCB;
+	padding:4px 7px 4px 7px;
+	border:2px solid #00CCCB;
+	box-shadow: none; 
+}
+
+#connectionPage, .confirmationPage
+{
+	background: #FFF;
+	text-align: center;
+}
+
+.confirmationPage
+{
+	max-width:400px;
+	margin-right: auto;
+	margin-left: auto;
+	padding-bottom: 40px;
+	border: 5px inset #aaa;
+}
+
+.confirmationPageMessage 
+{
+	font-weight: bold;
+	font-size : 21px;
+	padding-top:30px;
+	padding-bottom: 30px;
+}
+
+/* -------------------------------------- Admin space ----------------------- */
+
+body
+{
+	background: #22427C;
+}
 
 #headerAdmin
 {
 	text-align: center;
-	margin-bottom: 50px;
+	padding-bottom: 40px;
+	margin-top:0;
+	background: #22427C;
+	color: #00CCCB;
 }
+
+/* -------------------------------------- Admin page ----------------------- */
 
 .sectionAdmin
 {
 	border-top: solid 2px #eeeeee;
+	width:92%;
+	padding-right:2%;
+	padding-left: 2%;
+	margin:auto;
+	background: #FFF;
+	margin-bottom: 40px;
+}
+
+.titleAdmin 
+{
+	text-align:center;
+}
+
+#buttonAddChapter
+{
+	right:20px;
+	bottom: 20px;
+	position: fixed;
+	width:55px;
+	height:55px;
+	background: #00CCCB;
+	box-shadow:1px 1px 4px #999;
+	font: 40px Arial;
+	border-radius:50%;
+	border-color: #22427C;
+	color: #22427C;
+}
+
+#buttonAddChapter:hover
+{
+	border-left:2px solid;
+	border-color: #22427C;
+	box-shadow: none;
+}
+
+#chaptersLists
+{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+#commentsLists
+{
+	width:80%;
+	margin:auto;
+}
+
+.subTitlesLists
+{
+	margin-top:40px;
+	margin-bottom:0;
+}
+
+.chaptersTitles
+{
+	font-size: 22px;
+}
+
+.datesChaptersLists, .dateCommentsLists
+{
+	font-style: italic;
+	margin-top: 2px;
+}
+
+.buttonsChaptersLists, .buttonsCommentsLists
+{
+	display: flex;
+}
+
+.commentsContent 
+{
+	border: 2px solid;
+	border-color: #D3D3D3;
+	padding: 15px 15px 15px 15px;
+	background: #FEFEFE;
+	text-align: justify;
+	margin-bottom: 5px;
+	background: rgba(220, 220, 220, 0.25);
+}
+
+.commentsChapter
+{
+	text-align: right;
+	margin-right:10px;
+	margin-bottom:2px;
+	margin-top:2px;
+	font-weight: bold;
 }
 
 /* --------------------------- Page Add or update a chapter ------------------- */
 
-.chapterForm 
+#chapterForm 
 {
 	margin: 10px 20px 10px 20px;
+}
+
+#chapterForm p label
+{
+	font-size: 17px;
+	text-transform: uppercase;
+	margin-bottom: 5px;
+	font-style:italic;
 }
 
 .titleField 
 {
 	width: 100%;
-	margin-bottom: 10px;
+	margin-top: 50px;
+	margin-bottom: 30px;
+	font-size: 23px;
+	border: 1.5px solid #22427C;
+	padding: 5px 5px 5px 5px;
+}
+
+.buttonsStatus
+{
+	margin-bottom: 30px;
+	border-color: #22427C;
+}
+
+.legendButtonsStatus
+{
+	padding: 3px 3px 3px 3px;
+	font-weight: bold;
+	color: #22427C;
+	font-size: 18.5px;
+}
+
+#buttonSave
+{
+	text-align: right;
+	margin-bottom:30px;
+	padding-right: 40px;
+}
+
+#buttonSave .buttonAdmin
+{
+	font-size:15px;
+}
+
+/* ------------ TinyMCE --------------- */
+
+#mceu_28-body, #mceu_62-body  
+{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#mceu_53, #mceu_61, .mce-widget.mce-btn, #mceu_20, #mceu_26, .mce-menu, .mce-menu-item.mce-disabled
+{
+	background: #eeeeee !important;
+}
+
+.mce-menu-item.mce-active.mce-menu-item-normal .mce-text
+{
+	color: #eeeeee !important;
+}
+
+.mce-ico, #mceu_36-open
+{
+	color: #22427C !important;
+}
+
+.mce-menubtn button span, .mce-text, .mce-btn button
+{
+	color: #22427C !important;
+}
+
+.mce-menu-item.mce-active.mce-menu-item-normal
+{
+	background: #22427C !important;
+}
+
+.mce-widget:hover, .mce-ico:hover, #mceu36-open:hover, ._mce-menu-item .mce-ico, .mce-text:hover, .mce-menu-item.mce-active.mce-menu-item-normal .mce-text:hover
+{
+	color: #00CCCB !important;
 }
