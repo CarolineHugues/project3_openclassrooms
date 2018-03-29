@@ -169,13 +169,4 @@ class CommentManager extends Manager
     
    		return $comments;
   	}
-
-  	public function getChapterTitle()
-  	{
-  		$request = $this->db->exec('SELECT chapters.title chapter_title FROM chapters chapters INNER JOIN comments comments ON chapters.id = comments.chapterId');
-
-		$chapterTitle = $request;
-
-  		return $chapterTitle;
-  	}
 }
