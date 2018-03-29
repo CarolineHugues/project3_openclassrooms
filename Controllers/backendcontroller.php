@@ -48,8 +48,11 @@ class BackendController
     else 
     {
       $this->_chapterManager->save($chapter);
-      $id = $_POST['id'];
-      $chapter = $this->_chapterManager->getUnique($id);
+      if (isset($_POST['id']))
+      {
+        $id = $_POST['id'];
+        $chapter = $this->_chapterManager->getUnique($id);
+      }
       $view = new BackendView('saveChapter');
       $view->generate(array('saveChapter', 'chapter' => $chapter));
 		}

@@ -94,7 +94,7 @@ class Router
                     }
                     else 
                     {
-                        $chapter = new Chapter(['title' => $_POST['title'], 'content' => $_POST['content'], 'excerpt' => $_POST['excerpt']]);  
+                        $chapter = new Chapter(['title' => $_POST['title'], 'content' => $_POST['content'], 'excerpt' => $_POST['excerpt'], 'status' => $_POST['status']]);  
                     }
                     $this->_backendController->saveChapter($chapter);
                 }   
