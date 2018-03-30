@@ -118,6 +118,12 @@ class Router
                     $id = $_POST['id'];
                     $this->_backendController->deleteComment($id);
                 }
+                else if ($_GET['action'] == 'updatePassword') 
+                {
+                    $login = $_POST['login'];
+                    $password = $_POST['password'];
+                    $this->_connectionController->updatePassword($password, $login);
+                }
                 else 
                 {
                     throw new Exception("Action non valide");    

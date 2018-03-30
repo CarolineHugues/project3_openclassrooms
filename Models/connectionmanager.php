@@ -1,12 +1,24 @@
 <?php
 
+require_once 'Models/connection.php';
+
 class ConnectionManager extends Manager 
 {
-	public function update(Connection $connection) 
+	public function getLogin()
+	{
+		$request = $this->db->query('SELECT login FROM connection');
+
+		$login = $request->fetchColumn();
+
+		return $login;
+	}
+
+	public function update($password, $login) 
 	{
 		$request = $this->db->prepare('UPDATE connection SET password = :password WHERE login = :login');
 
-		$request->bindValue(':password', $connection->password());
+		$request->bindValue(':password', password_hash($password, PASSWORD_DEFAULT));
+		$request->bindValue(':login', $login);
 
 		$request->execute();
 

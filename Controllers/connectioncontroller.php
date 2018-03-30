@@ -36,8 +36,9 @@ class ConnectionController
 			$reportedComments = $this->_commentManager->getReportedList(0,10);
 			$nbPublishedComments = $this->_commentManager->countPublishedComments();
 			$nbReportedComments = $this->_commentManager->countReportedComments();
+			$getLogin = $this->_connectionManager->getLogin();
 			$view = new BackendView('admin');
-    		$view->generate(array('admin', 'chapters' => $chapters, 'draftsChapters' => $draftsChapters, 'nbPublishedChapters' => $nbPublishedChapters, 'nbDraftsChapters' => $nbDraftsChapters, 'comments' => $comments, 'reportedComments' => $reportedComments, 'nbPublishedComments' => $nbPublishedComments, 'nbReportedComments' => $nbReportedComments));
+    		$view->generate(array('admin', 'chapters' => $chapters, 'draftsChapters' => $draftsChapters, 'nbPublishedChapters' => $nbPublishedChapters, 'nbDraftsChapters' => $nbDraftsChapters, 'comments' => $comments, 'reportedComments' => $reportedComments, 'nbPublishedComments' => $nbPublishedComments, 'nbReportedComments' => $nbReportedComments, 'getLogin' => $getLogin));
 		}
 		else
 		{
@@ -45,4 +46,29 @@ class ConnectionController
 			require 'Views/Backend/connectionView.php';
 		}	
 	}
+
+	public function updatePassword($password, $login)
+  	{
+  		if (empty($_POST['password']))
+  		{
+  			echo 'Le mot de passe ne peut pas être vide !';
+  		}
+  		elseif (strlen($_POST['password']) < 6)
+  		{
+  			echo 'Le mot de passe n\'est pas assez long ! Il doit contenir au moins 6 caractères.';
+  		}
+  		else
+  		{
+  			if ($_POST['password'] == $_POST['newpassword'])
+  			{
+  				$this->_connectionManager->update($password, $login);
+  				$view = new BackendView('updatePassword');
+    			$view->generate(array('updatePassword'));
+  			}
+  			else
+  			{
+  				echo 'Les mots de passe ne correspondent pas !';
+  			}
+  		}
+  	}
 }

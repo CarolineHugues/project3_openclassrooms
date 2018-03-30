@@ -3,7 +3,7 @@
 class Connection 
 {
 	private $_login,
-			$_password = password_hash($_POST['password'], PASSWORD_DEFAULT),
+			$_password,
 			$_errors = []; 	
 
 	const INVALID_PASSWORD = 1;
@@ -31,6 +31,11 @@ class Connection
 	public function password()
 	{
 		return $this->_password;
+	}
+
+	public function login()
+	{
+		return $this->_login;
 	}
 
 }
