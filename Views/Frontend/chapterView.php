@@ -55,7 +55,7 @@
 				</div>
 				<div class="6u 12u$(xsmall)">
 					<label for="authorMail">Mail</label>
-					<input id="mail" name="authorMail" type="text" />
+					<input id="mail" name="authorMail" type="email" />
 				</div>
 				<div class="12u$">
 					<label for="content">Commentaire</label>
