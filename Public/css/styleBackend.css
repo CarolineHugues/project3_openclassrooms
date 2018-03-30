@@ -11,8 +11,7 @@ h2
 
 h3
 {
-	font-size: 30px;
-	color: #22427C;
+	font-size: 27px;
 	text-transform: uppercase;
 	font-family: "Source Sans Pro", Helvetica, sans-serif;
 	font-weight: 900;
@@ -20,7 +19,7 @@ h3
 	letter-spacing: 0.075em;
 	margin-top:-15px;
 	margin-bottom:40px;
-	background: #00CCCB;
+	background: #BBD2E1;
 	padding-top: 10px;
 	padding-bottom:10px;
 	max-width: 500px;
@@ -192,7 +191,7 @@ body
 	padding-bottom: 40px;
 	margin-top:0;
 	background: #22427C;
-	color: #00CCCB;
+	color: #BBD2E1;
 }
 
 /* -------------------------------------- Admin page ----------------------- */
@@ -248,10 +247,17 @@ body
 	margin:auto;
 }
 
-.subTitlesLists
+#chaptersLists h4, #commentsLists h4
 {
-	margin-top:40px;
+	margin-top:30px;
 	margin-bottom:0;
+	padding-bottom: 5px;
+	border-bottom: 2px solid #eeeeee;
+}
+
+#titlePublishedCommentsList
+{
+	margin-top:70px !important;
 }
 
 .chaptersTitles
@@ -270,6 +276,12 @@ body
 	display: flex;
 }
 
+.buttonsCommentsLists
+{
+	justify-content: center;
+	margin-top: 15px;
+}
+
 .commentsContent 
 {
 	border: 2px solid;
@@ -281,13 +293,32 @@ body
 	background: rgba(220, 220, 220, 0.25);
 }
 
-.commentsChapter
+#updatePasswordSpace
 {
-	text-align: right;
-	margin-right:10px;
-	margin-bottom:2px;
-	margin-top:2px;
-	font-weight: bold;
+	max-width:300px;
+	margin:auto;
+}
+
+#showLogin
+{
+	display: flex;
+}
+
+#showLogin p 
+{
+	margin-left:20px;
+	border-bottom:1px solid;
+}
+
+#updatePasswordSpace .passwordField
+{
+	width:300px;
+	margin-bottom:10px;
+}
+
+#updatePasswordSpace form 
+{
+	text-align: center;
 }
 
 /* --------------------------- Page Add or update a chapter ------------------- */
