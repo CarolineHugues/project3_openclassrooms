@@ -156,7 +156,7 @@
 			?>
 				<ul>
 					<li>
-						<h5>Par <?= htmlspecialchars($comment->author) ?> | Adresse mail : <?= htmlspecialchars($comment->authorMail) ?></h5>
+						<h5>Par <?= htmlspecialchars($comment->author) ?> | Adresse mail : <?= htmlspecialchars($comment->authorMail) ?> </h5>
 						<p class="dateCommentsLists">Le <?= $comment->publishedDate_fr ?></p>
 						<p class="commentsContent"><?= htmlspecialchars(nl2br($comment->content)) ?></p>
 						<div class="buttonsCommentsLists">
@@ -185,6 +185,7 @@
 		</div>
 		<h4>Changer de mot de passe :</h4>
 		<form action="?action=updatePassword" method="post">
+			<!--<input type="password" name="oldpassword" placeholder="Renseigner votre ancien mot de passe."/><br />-->
 			<input type="password" name="password" placeholder="Renseigner votre nouveau mot de passe" class="passwordField" /><br />
 			<input type="password" name="newpassword" placeholder="Renseigner à nouveau votre nouveau mot de passe" class="passwordField"/><br />
 			<input type="hidden" name="login" value="<?= $getLogin ?>" />
