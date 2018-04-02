@@ -15,43 +15,49 @@
     <?php if(isset($chapter) && !$chapter->isNew())
     {
     ?>
-        <fieldset class="buttonsStatus">
-            <legend class="legendButtonsStatus">Enregistrer le chapitre : </legend>
-            <div>
+        <section id="checkedList">
+            <fieldset class="buttonsStatus">
+                <legend class="legendButtonsStatus">Enregistrer le chapitre : </legend>
                 <?php if ($chapter->status == 'published')
                 {
                 ?>
-                    <input type="radio" id="published" name="status" value="published" checked>
-                    <label for="published">Publié</label> 
-                <?php
-                }
-                else
-                {
-               ?>
-                    <input type="radio" id="draft" name="status" value="draft" checked>
+                    <div>
+                        <label for="published">Publié</label>
+                        <input type="radio" id="published" name="status" value="published" checked>
+                    </div>
+                    <div>
                     <label for="draft">Brouillon</label>
-                <?php   
-                }
-                ?>
-            </div>
-            <div>
-                <?php if ($chapter->status == 'published')
-                {
-                ?>
-                <input type="radio" id="draft" name="status" value="draft">
-                <label for="draft">Brouillon</label>
+                        <input type="radio" id="draft" name="status" value="draft">
+                    </div>
                 <?php
                 }
                 else
                 {
                 ?>
-                    <input type="radio" id="published" name="status" value="published">
-                    <label for="published">Publié</label> 
+                    <div>
+                        <label for="draft">Brouillon</label>
+                        <input type="radio" id="draft" name="status" value="draft" checked>
+                    </div>
+                    <div>
+                        <label for="published">Publié</label>
+                        <input type="radio" id="published" name="status" value="published">
+                </div>
                 <?php   
                 }
                 ?>
-            </div>
-        </fieldset>
+            </fieldset>
+            <fieldset class="buttonsPublishedDate">
+                <legend class="legendButtonsPublishedDate">Date de publication : </legend>
+                <div>
+                    <label for="new"><?php echo 'Maintenant' ?></label>
+                    <input type="radio" id="new" name="publishedDate" value="new">
+                </div>
+                <div>
+                    <label for="current"><?= $chapter->publishedDate_fr ?></label>
+                    <input type="radio" id="current" name="publishedDate" value="current" checked>
+                </div>
+            </fieldset>
+        </section>
         <input type="hidden" name="id" value="<?= $chapter->id() ?>" />
         <div id="buttonSave">
             <input type="submit" value="Modifier" name="modify" class="buttonAdmin" />
@@ -64,12 +70,12 @@
         <fieldset class="buttonsStatus">
             <legend class="legendButtonsStatus">Enregistrer le chapitre : </legend>
             <div>
-                <input type="radio" id="draft" name="status" value="draft" checked>
                 <label for="draft">Brouillon</label>
+                <input type="radio" id="draft" name="status" value="draft" checked>
             </div>
             <div>
-                <input type="radio" id="published" name="status" value="published">
                 <label for="published">Publié</label>
+                <input type="radio" id="published" name="status" value="published">
             </div>
         </fieldset>
         <div id="buttonSave">
