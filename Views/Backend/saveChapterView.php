@@ -1,15 +1,15 @@
 <?php $this->title = 'Le chapitre a été sauvegardé'; ?>
 
 <section class="confirmationPage">
-	<?php if (isset($chapter->status))
+	<?php if (isset($_POST['status']))
 	{
-		if ($chapter->status == 'draft')
+		if ($_POST['status'] == 'draft')
 		{
 		?>
     		<p class="confirmationPageMessage">Le chapitre a été enregistré !</p>
 		<?php 
 		}
-		else if ($chapter->status == 'published')
+		else if ($_POST['status'] == 'published')
 		{
 		?>
 			<p class="confirmationPageMessage">Le chapitre a été enregistré et publié !</p>
