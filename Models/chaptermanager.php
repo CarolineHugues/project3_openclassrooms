@@ -35,6 +35,17 @@ class ChapterManager extends Manager
 		$request->closeCursor(); 
 	}
 
+	public function updatePublishedDate(Chapter $chapter)
+	{
+		$request = $this->db->prepare('UPDATE chapters SET publishedDate = NOW() WHERE id = :id');
+
+		$request->bindValue(':id', $chapter->id(), PDO::PARAM_INT);
+
+		$request->execute();
+
+		$request->closeCursor(); 
+	}
+
 	public function delete($id) 
 	{
 		$this->db->exec('DELETE FROM chapters WHERE id = '.(int) $id);
@@ -120,7 +131,7 @@ class ChapterManager extends Manager
 
 	public function getPublishedList($start = -1, $limit = -1) 
 	{
-		$sql = 'SELECT id, title, author, content, excerpt, DATE_FORMAT(addDate, \'%d/%m/%Y à %Hh%i\') AS addDate_fr, DATE_FORMAT(updateDate, \'%d/%m/%Y à %Hh%i\') AS updateDate_fr, DATE_FORMAT(publishedDate, \'%d/%m/%Y à %Hh%i\') AS publishedDate_fr, status FROM chapters WHERE status = \'published\' ORDER BY id DESC';
+		$sql = 'SELECT id, title, author, content, excerpt, DATE_FORMAT(addDate, \'%d/%m/%Y à %Hh%i\') AS addDate_fr, DATE_FORMAT(updateDate, \'%d/%m/%Y à %Hh%i\') AS updateDate_fr, DATE_FORMAT(publishedDate, \'%d/%m/%Y à %Hh%i\') AS publishedDate_fr, status FROM chapters WHERE status = \'published\' ORDER BY publishedDate DESC';
 
 		if ($start != -1 || $limit != -1)
 			{
@@ -170,5 +181,4 @@ class ChapterManager extends Manager
 
 		return $chaptersList;
 	}
-
 }

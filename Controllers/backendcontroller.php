@@ -48,11 +48,14 @@ class BackendController
     }
     else 
     {
-      $this->_chapterManager->save($chapter);
-      if (isset($_POST['id']))
+      if (isset($_POST['publishedDate']) AND $_POST['publishedDate'] == 'new')
       {
-        $id = $_POST['id'];
-        $chapter = $this->_chapterManager->getUnique($id);
+        $this->_chapterManager->updatePublishedDate($chapter);
+        $this->_chapterManager->save($chapter);
+      }
+      else
+      {
+        $this->_chapterManager->save($chapter);
       }
       $view = new BackendView('saveChapter');
       $view->generate(array('saveChapter', 'chapter' => $chapter));
