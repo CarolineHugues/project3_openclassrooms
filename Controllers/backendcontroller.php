@@ -6,6 +6,7 @@ require_once 'Models/pdofactory.php';
 require_once 'Views/Backend/backendview.php';
 
 
+
 class BackendController 
 {
 
@@ -19,7 +20,7 @@ class BackendController
 	}
 
   public function addChapter()
-  {    
+  {   
     $view = new BackendView('writeChapter');
     $view->generate(array('writeChapter'));
   }

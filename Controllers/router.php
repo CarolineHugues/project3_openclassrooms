@@ -3,6 +3,8 @@ require_once 'Controllers/frontendcontroller.php';
 require_once 'Controllers/connectioncontroller.php';
 require_once 'Controllers/backendcontroller.php';
 
+session_start();
+
 
 class Router 
 {
@@ -76,14 +78,22 @@ class Router
                 }   
                 else if ($_GET['action'] == 'writeChapter') 
                 {
-                    if (isset($_POST['id']))
+                    if (isset($_SESSION['login']) AND !empty($_SESSION['login']))
                     {
-                        $id = $_POST['id'];
-                        $this->_backendController->updateChapter($id);
+                        if (isset($_POST['id']))
+                        {
+                            $id = $_POST['id'];
+                            $this->_backendController->updateChapter($id);
+                        }
+                        else
+                        {
+                            $this->_backendController->addChapter();
+                        }
                     }
-                    else
+                    else 
                     {
-                        $this->_backendController->addChapter();
+                        echo 'Vous devez être connecté pour pouvoir accéder à cette page !';
+                        $this->_connectionController->connectionAccess();
                     }
                 } 
                 else if ($_GET['action'] == 'saveChapter') 
