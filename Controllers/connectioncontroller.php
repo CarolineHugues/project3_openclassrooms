@@ -38,9 +38,13 @@ class ConnectionController
 			$nbReportedComments = $this->_commentManager->countReportedComments();
 			$getChapterTitle = $this ->_commentManager->getChapterTitle();
 			$getLogin = $this->_connectionManager->getLogin();
-			$_SESSION['login'] = $_POST['login']; 
 			$view = new BackendView('admin');
     		$view->generate(array('admin', 'chapters' => $chapters, 'draftsChapters' => $draftsChapters, 'nbPublishedChapters' => $nbPublishedChapters, 'nbDraftsChapters' => $nbDraftsChapters, 'comments' => $comments, 'reportedComments' => $reportedComments, 'nbPublishedComments' => $nbPublishedComments, 'nbReportedComments' => $nbReportedComments, 'getChapterTitle' => $getChapterTitle, 'getLogin' => $getLogin));
+    		if (isset($_POST['login']) AND isset($_POST['password']))
+    		{
+    			$_SESSION['login'] = $_POST['login'];
+				$_SESSION['password'] = $_POST['password'];
+			}
 		}
 		else
 		{

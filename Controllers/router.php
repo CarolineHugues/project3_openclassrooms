@@ -71,6 +71,12 @@ class Router
                         $password = $_POST['password'];
                         $this->_connectionController->adminAccess($login, $password);
                     }
+                    else if (isset($_SESSION['login']) AND !empty($_SESSION['login']) AND isset($_SESSION['password']) AND !empty($_SESSION['password']))
+                    {
+                    	$login = $_SESSION['login'];
+                        $password = $_SESSION['password'];
+                        $this->_connectionController->adminAccess($login, $password);
+                    }
                     else 
                     {
                         $this->_connectionController->connectionAccess();
@@ -78,7 +84,7 @@ class Router
                 }   
                 else if ($_GET['action'] == 'writeChapter') 
                 {
-                    if (isset($_SESSION['login']) AND !empty($_SESSION['login']))
+                    if (isset($_SESSION['login']) AND !empty($_SESSION['login']) AND isset($_SESSION['password']) AND !empty($_SESSION['password']))
                     {
                         if (isset($_POST['id']))
                         {
