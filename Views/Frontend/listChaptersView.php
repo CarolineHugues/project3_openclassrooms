@@ -21,4 +21,21 @@
 		<?php
 		}
 		?>
+		<div id="chaptersNavigationSpace">
+			<ul id="chaptersNavigation" class="actions">
+				<?php
+				if ($nbListChaptersPages > 1)
+				{
+					for ($i = 1; $i <= $nbListChaptersPages; $i++)
+					{
+					?>
+						<li>
+   							<?php echo "<a class='button small' href='index.php?action=listChapters&p=$i'> $i </a>"; ?>
+   						</li>
+   					<?php	
+    				}
+    			}	
+				?>
+			</ul>
+		</div>
 	</section> 
