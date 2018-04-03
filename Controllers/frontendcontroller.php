@@ -3,31 +3,43 @@
 require_once 'Models/chaptermanager.php';
 require_once 'Models/commentmanager.php';
 require_once 'Models/pdofactory.php';
+require_once 'Models/navigation.php';
 require_once 'Views/Frontend/frontendview.php';
+
 
 
 class FrontendController {
 
 	private $_chapterManager,
-			$_commentManager;
+			$_commentManager,
+			$_navigation;
 
   	public function __construct() 
   	{
     	$this->_chapterManager = new ChapterManager (PDOFactory::getMysqlConnexion());
     	$this->_commentManager = new CommentManager (PDOFactory::getMysqlConnexion());
+    	$this->_navigation = new Navigation ();
   	}
 
 	public function listChapters()
 	{
-    	$chapters = $this->_chapterManager->getPublishedList(0,4);
+		$chaptersPerPage = 4;
+		$totalChapters = $this->_chapterManager->countPublished();
+		$nbListChaptersPages = $this->_navigation->CountNbPages($totalChapters, $chaptersPerPage);
+		$curentChaptersPage = $this->_navigation->getCurrentPage($totalChapters, $chaptersPerPage);
+		$firstEntrance = $this->_navigation->getFirstEntrance($curentChaptersPage, $chaptersPerPage);
+
+    	$chapters = $this->_chapterManager->getPublishedList($firstEntrance, $chaptersPerPage);
     	$view = new FrontendView('listChapters');
-    	$view->generate(array('chapters' => $chapters));
+    	$view->generate(array('chapters' => $chapters, 'nbListChaptersPages' => $nbListChaptersPages));
 	}
 
 	public function chapter($id)
 	{
 		$chapter = $this->_chapterManager->getUnique($id);
-    	$comments = $this->_commentManager->getListOf($chapter->id());
+
+		$comments = $this->_commentManager->getListOf($chapter->id());
+
     	$view = new FrontendView('chapter');
     	$view->generate(array('chapter' => $chapter, 'comments' => $comments));
 	}
