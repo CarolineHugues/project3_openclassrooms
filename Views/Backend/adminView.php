@@ -43,7 +43,28 @@
 					</li>
 				</ul>
 			<?php 		
-			} ?>
+			}
+			?>
+			<div>
+				<?php
+				if ($nbPublishedChaptersListPages > 1)
+				{
+				?>
+					<ul class="navigationSpaceButtons">
+						<?php for ($i = 1; $i <= $nbPublishedChaptersListPages; $i++)
+						{
+						?>
+							<li class="navigationButtons">
+   								<?php echo "<a href='?action=adminAccess&p=$i'> $i </a>"; ?>
+   							</li>
+   						<?php
+    					}
+    					?>
+    				</ul>
+    			<?php	 
+    			}	
+				?>
+			</div>
 		</div>
 		
 		<div>
@@ -69,7 +90,7 @@
 						<p class="datesChaptersLists">Ajouté le <?= $chapter->addDate_fr ?> | Dernière modification le <?= $chapter->updateDate_fr ?></p>
 						<div class="buttonsChaptersLists">
 							<form action="?action=chapter&id=<?= $chapter->id() ?>" method="post">
-								<input type="submit" value="Apperçu" name="preview" class="buttonAdmin" />
+								<input type="submit" value="Aperçu" name="preview" class="buttonAdmin" />
 							</form>
 							<form action="?action=writeChapter" method="post">
 								<input type="hidden" name="id" value="<?= $chapter->id() ?>" />
@@ -87,7 +108,28 @@
 					</li>
 				</ul>
 			<?php 		
-			} ?>
+			} 
+			?>
+			<div>
+				<?php
+				if ($nbDraftsChaptersListPages > 1)
+				{
+				?>
+					<ul class="navigationSpaceButtons">
+						<?php for ($i = 1; $i <= $nbDraftsChaptersListPages; $i++)
+						{
+						?>
+							<li class="navigationButtons">
+   								<?php echo "<a href='?action=adminAccess&p=$i'> $i </a> ";?>
+   							</li>
+   						<?php 
+    					}
+    					?>
+    				</ul>
+    			<?php
+    			}	 
+				?>	
+			</div>
 		</div>
 	</section>
 </section>
@@ -96,7 +138,7 @@
 	<h3 class="titleAdmin">Les commentaires</h3>
 
 	<section id="commentsLists">
-		<div>
+		<div id="reportedcommentslist">
 			<?php if ($nbReportedComments < 2)
 			{
 			?>
@@ -115,7 +157,7 @@
 			?>
 				<ul>
 					<li>
-						<h5>Par <?= htmlspecialchars($comment->author) ?> | Adresse mail : <?= htmlspecialchars($comment->authorMail) ?></h5>
+						<h5>Par <?= htmlspecialchars($comment->author) ?> | Adresse mail : <?= htmlspecialchars($comment->authorMail) ?> | <a href="index.php?action=chapter&id=<?= $comment->chapterId ?>"><?= $comment->title ?></a></h5>
 						<p class="dateCommentsLists">Le <?= $comment->publishedDate_fr ?></p>
 						<p class="commentsContent"><?= htmlspecialchars(nl2br($comment->content)) ?></p>
 						<div class="buttonsCommentsLists">
@@ -134,10 +176,31 @@
 					</li>
 				</ul>
 			<?php 		
-			} ?>
+			} 
+			?>
+			<div>
+				<?php
+				if ($nbReportedCommentsListPages > 1)
+				{
+				?>
+					<ul class="navigationSpaceButtons">
+						<?php for ($i = 1; $i <= $nbReportedCommentsListPages; $i++)
+						{
+						?>
+							<li class="navigationButtons">
+   								<?php echo "<a href='?action=adminAccess&p=$i#reportedcommentslist'> $i </a>";?>
+   							</li>
+   						<?php 
+    					}
+    					?>
+    				</ul>
+    			<?php
+    			}	 
+				?>	
+			</div>
 		</div>
 		
-		<div>
+		<div id="publishedcommentslist">
 			<?php if ($nbPublishedComments < 2)
 			{
 			?>
@@ -156,7 +219,7 @@
 			?>
 				<ul>
 					<li>
-						<h5>Par <?= htmlspecialchars($comment->author) ?> | Adresse mail : <?= htmlspecialchars($comment->authorMail) ?></h5>
+						<h5>Par <?= htmlspecialchars($comment->author) ?> | Adresse mail : <?= htmlspecialchars($comment->authorMail) ?> | <a href="index.php?action=chapter&id=<?= $comment->chapterId ?>"><?= $comment->title ?></a></h5>
 						<p class="dateCommentsLists">Le <?= $comment->publishedDate_fr ?></p>
 						<p class="commentsContent"><?= htmlspecialchars(nl2br($comment->content)) ?></p>
 						<div class="buttonsCommentsLists">
@@ -171,18 +234,35 @@
 					</li>
 				</ul>
 			<?php 		
-			} ?>
+			} 
+			?>
+			<div class="navigationSpace">
+				<?php
+				if ($nbPublishedCommentsListPages > 1)
+				{
+				?>
+					<ul class="navigationSpaceButtons">
+						<?php for ($i = 1; $i <= $nbPublishedCommentsListPages; $i++)
+						{
+						?>
+							<li class="navigationButtons">
+   								<?php echo "<a href='?action=adminAccess&p=$i#publishedcommentslist'> $i </a>"; ?>
+   							</li>
+   						<?php 
+    					}
+    					?>
+    				</ul>
+    			<?php
+    			}	 
+				?>	
+			</div>
 		</div>
 	</section>
 </section>
 
 <section class="sectionAdmin">
-	<h3 class="titleAdmin">Login et mot de passe</h3>
+	<h3 class="titleAdmin">Mot de passe</h3>
 	<section id="updatePasswordSpace">
-		<div id="showLogin">
-			<h4>Login :</h4>
-			<p><?= $getLogin ?></p>	
-		</div>
 		<h4>Changer de mot de passe :</h4>
 		<form action="?action=updatePassword" method="post">
 			<input type="password" name="password" placeholder="Renseigner votre nouveau mot de passe" class="passwordField" /><br />
