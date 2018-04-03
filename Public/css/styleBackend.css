@@ -293,21 +293,44 @@ body
 	background: rgba(220, 220, 220, 0.25);
 }
 
+.navigationSpace
+{
+	padding-bottom:10px;
+}
+
+.navigationSpaceButtons
+{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: right;
+}
+
+.navigationButtons a
+{
+	border:none;
+	font-size: 14px;
+	font-weight: bold;
+	color: #F0FFFF;
+	background: #00CCCB;
+	padding:6px 10px 6px 10px;
+	margin-right: 5px;
+	margin-bottom:15px;
+	box-shadow:1px 1px 3px #999;
+}
+
+.navigationButtons a:hover 
+{
+	background: #F0FFFF;
+	color:#00CCCB;
+	padding:5px 9px 5px 9px;
+	border:2px solid #00CCCB;
+	box-shadow: none; 
+}
+
 #updatePasswordSpace
 {
 	max-width:300px;
 	margin:auto;
-}
-
-#showLogin
-{
-	display: flex;
-}
-
-#showLogin p 
-{
-	margin-left:20px;
-	border-bottom:1px solid;
 }
 
 #updatePasswordSpace .passwordField
