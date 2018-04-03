@@ -106,7 +106,7 @@ class CommentManager extends Manager
 
 	public function getReportedList($start = -1, $limit = -1) 
 	{
-		$sql = 'SELECT id, author, content, DATE_FORMAT(publishedDate, \'%d/%m/%Y à %Hh%i\') AS publishedDate_fr, authorMail, status, chapterId FROM comments WHERE status = \'reported\' ORDER BY id DESC';
+		$sql = 'SELECT co.id, ch.title, co.author, co.content, DATE_FORMAT(co.publishedDate, \'%d/%m/%Y à %Hh%i\') AS publishedDate_fr, co.authorMail, co.status, co.chapterId FROM comments co INNER JOIN chapters ch  ON ch.id = co.chapterId WHERE co.status = \'reported\' ORDER BY id DESC';
 
 		if ($start != -1 || $limit != -1)
 			{
@@ -130,7 +130,7 @@ class CommentManager extends Manager
 
 	public function getPublishedList($start = -1, $limit = -1) 
 	{
-		$sql = 'SELECT id, author, content, DATE_FORMAT(publishedDate, \'%d/%m/%Y à %Hh%i\') AS publishedDate_fr, authorMail, status, chapterId FROM comments WHERE status = \'published\' ORDER BY id DESC';
+		$sql = 'SELECT co.id, ch.title, co.author, co.content, DATE_FORMAT(co.publishedDate, \'%d/%m/%Y à %Hh%i\') AS publishedDate_fr, co.authorMail, co.status, co.chapterId FROM comments co INNER JOIN chapters ch ON ch.id = co.chapterId WHERE co.status = \'published\' ORDER BY id DESC';
 
 		if ($start != -1 || $limit != -1)
 			{
