@@ -41,7 +41,7 @@
               <a href="index.php">Présentation</a>
             </li>
             <li <?php if ($currentNav == 'chapters') {echo ' class="active"';} ?>>
-              <a href="index.php?action=listChapters">L'histoire</a>
+              <a href="index.php?action=listChapters&p=1">L'histoire</a>
             </li>
             <li <?php if ($currentNav == 'lastChapters') {echo ' class="active"';} ?>>
               <a href="index.php?action=listLastChapters">Les derniers chapitres</a>
