@@ -10,7 +10,6 @@
 		</header> 
 
 		<p><?= nl2br($chapter->content) ?></p>
-	
 	</section>
 
 	<section>
