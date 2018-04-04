@@ -73,6 +73,7 @@
 	display:flex;
 	flex-wrap: wrap;
 	justify-content: right;
+	margin-bottom:0;
 }
 
 #chaptersNavigation li
@@ -80,7 +81,7 @@
 	width:auto !important;
 }
 
-#chaptersNavigation li
+#chaptersNavigation li, #chaptersNavigation p
 {
 	padding-top: 1rem !important;
 	padding-right:0;
@@ -101,7 +102,14 @@
 	background: #FFFFFF !important;
 }
 
+#chaptersNavigation .active a
+{
+	pointer-events: none;
+	color:#909498 !important;
+	background: #FFFFFF !important;
+}
 
+/* ------ Button Read the story fom the beginning ---------*/
 
 #buttonReadBeginningSpace {
 	display: flex; 
@@ -142,11 +150,21 @@
 }			
 
 
+
+
 @media screen and (max-width:980px)
 {
 	#footer p 
 	{
 		text-align:center;
 		margin-bottom:1rem;
+	}
+}
+
+@media screen and (max-width:500px)
+{
+	.logo 
+	{
+		border:none !important;
 	}
 }
