@@ -155,6 +155,32 @@ class ChapterManager extends Manager
 		return $PublishedChaptersList;
     }
 
+    public function getPublishedListAsc($start = -1, $limit = -1) 
+	{
+		$sql = 'SELECT id, title, author, content, excerpt, DATE_FORMAT(addDate, \'%d/%m/%Y à %Hh%i\') AS addDate_fr, DATE_FORMAT(updateDate, \'%d/%m/%Y à %Hh%i\') AS updateDate_fr, DATE_FORMAT(publishedDate, \'%d/%m/%Y à %Hh%i\') AS publishedDate_fr, status FROM chapters WHERE status = \'published\' ORDER BY publishedDate ASC';
+
+		if ($start != -1 || $limit != -1)
+			{
+				$sql .= ' LIMIT '.(int) $limit.' OFFSET '.(int) $start;
+			}
+
+		$request = $this->db->query($sql);
+		$request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Chapter');
+
+		$PublishedChaptersList = $request->fetchAll();
+
+		foreach ($PublishedChaptersList as $chapter)
+		{
+			$chapter->setAddDate(new DateTime($chapter->AddDate()));
+			$chapter->setUpdateDate(new DateTime($chapter->updateDate()));
+			$chapter->setPublishedDate(new DateTime($chapter->publishedDate()));
+		}
+
+		$request->closeCursor();
+
+		return $PublishedChaptersList;
+    }
+
 
 	public function getList($start = -1, $limit = -1) 
 	{
