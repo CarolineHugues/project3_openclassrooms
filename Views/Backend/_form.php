@@ -49,17 +49,7 @@
             <?php if ($chapter->status == 'published') 
             {
             ?>
-            <fieldset class="buttonsPublishedDate">
-                <legend class="legendButtonsPublishedDate">Date de publication : </legend>
-                <div>
-                    <label for="new"><?php echo 'Maintenant' ?></label>
-                    <input type="radio" id="new" name="publishedDate" value="new">
-                </div>
-                <div>
-                    <label for="current"><?= $chapter->publishedDate_fr ?></label>
-                    <input type="radio" id="current" name="publishedDate" value="current" checked>
-                </div>
-            </fieldset>
+                <input type="hidden" id="current" name="publishedDate" value="current" checked>
             <?php
             }
             ?>
