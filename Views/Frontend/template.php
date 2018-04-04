@@ -41,7 +41,10 @@
               <a href="index.php">Présentation</a>
             </li>
             <li <?php if ($currentNav == 'chapters') {echo ' class="active"';} ?>>
-              <a href="index.php?action=listChapters">Les chapitres</a>
+              <a href="index.php?action=listChapters">L'histoire</a>
+            </li>
+            <li <?php if ($currentNav == 'lastChapters') {echo ' class="active"';} ?>>
+              <a href="index.php?action=listLastChapters">Les derniers chapitres</a>
             </li>
             <li <?php if ($currentNav == 'chapter') {echo ' class="active"';} ?>>
               <p><?php if ($currentNav == 'chapter') {echo 'Lecture en cours';} ?></p>
@@ -54,9 +57,12 @@
         </div> 	
 
     	  <footer id="footer">
-          <p>
+          <p id="footerTitle">
             <i>Billet simple pour l'Alaska</i> - un livre de Jean Forteroche.
           </p>
+          <P id="administrationAccess">
+          	<a class="button small" href="?action=adminAccess">Administration</a>
+          </P>
         </footer>
         <div id="copyright">
           © 2018 - Jean Forteroche
