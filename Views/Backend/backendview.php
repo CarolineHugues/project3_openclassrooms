@@ -1,5 +1,4 @@
 <?php 
-require_once 'Views/view.php';
 
 class BackendView extends View {
 
