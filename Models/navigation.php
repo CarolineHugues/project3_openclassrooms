@@ -34,4 +34,24 @@ class Navigation
 
 		return $firstEntrance;
 	}
+
+	public function getNextPage() 
+	{
+		if (isset($_GET['p']))
+		{
+			$nextp = $_GET['p'] + 1;
+
+			return $nextp;
+		}
+	}
+
+	public function getPreviousPage()
+	{
+		if (isset($_GET['p']))
+		{
+			$previousp = $_GET['p'] - 1;
+
+			return $previousp;
+		}
+	}
 }
