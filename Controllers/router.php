@@ -34,7 +34,11 @@ class Router
                 if ($_GET['action'] == 'listChapters') 
                 {
                     $this->_frontendController->listChapters();
-                }  
+                }
+                if ($_GET['action'] == 'listLastChapters') 
+                {
+                    $this->_frontendController->listLastChapters();
+                }   
                 else if ($_GET['action'] == 'chapter') 
                 {
                     if (isset($_GET['id']) && $_GET['id'] > 0) 
