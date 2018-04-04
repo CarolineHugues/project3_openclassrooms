@@ -101,11 +101,40 @@
 	background: #FFFFFF !important;
 }
 
+
+
+#buttonReadBeginningSpace {
+	display: flex; 
+  	flex-direction: column; 
+  	justify-content: center; 
+}
+
+#buttonReadBeginning {
+	text-align:center;
+}
+
+.posts .button.special
+{
+	background: #909498;
+}
+
 /* ---------------------- Footer -------------------------*/	
 
-#footer p {
-	margin:2.5rem auto 2.5rem auto;
+#footer {
+	display: block !important;
+}
+
+#footerTitle {
+	padding-top: 2.5rem;
+	margin-bottom:0rem;
+	text-align:center;
 }	
+
+#administrationAccess {
+	text-align:right;
+	padding-right:2rem;
+	padding-bottom: 1rem;
+}
 
 #copyright {
 	font-size: 15px !important;
@@ -117,9 +146,7 @@
 {
 	#footer p 
 	{
-		margin:0;	
 		text-align:center;
-		padding-top:2rem;
-		padding-bottom: 2rem;
+		margin-bottom:1rem;
 	}
 }
