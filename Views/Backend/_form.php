@@ -46,6 +46,9 @@
                 }
                 ?>
             </fieldset>
+            <?php if ($chapter->status == 'published') 
+            {
+            ?>
             <fieldset class="buttonsPublishedDate">
                 <legend class="legendButtonsPublishedDate">Date de publication : </legend>
                 <div>
@@ -57,8 +60,18 @@
                     <input type="radio" id="current" name="publishedDate" value="current" checked>
                 </div>
             </fieldset>
+            <?php
+            }
+            ?>
         </section>
         <input type="hidden" name="id" value="<?= $chapter->id() ?>" />
+        <?php if ($chapter->status != 'published') 
+        {
+        ?> 
+            <input type="hidden" id="new" name="publishedDate" value="new">
+        <?php
+        }
+        ?>
         <div id="buttonSave">
             <input type="submit" value="Modifier" name="modify" class="buttonAdmin" />
         </div>
@@ -78,6 +91,7 @@
                 <input type="radio" id="published" name="status" value="published">
             </div>
         </fieldset>
+        <input type="hidden" id="new" name="publishedDate" value="new">
         <div id="buttonSave">
             <input type="submit" value="Enregistrer" class="buttonAdmin" />
         </div>

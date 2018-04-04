@@ -25,7 +25,7 @@ class BackendController
     $view->generate(array('writeChapter', 'chapter' => $chapter));
   }
 
-  public function saveChapter($chapter)
+  public function saveChapter($chapter, $publishedDate)
   {
   	if (empty($_POST['title']))
     {
@@ -40,18 +40,10 @@ class BackendController
       echo 'Vous devez renseigner le résumé du chapitre !';
     }
     else 
-    {
-      if (isset($_POST['publishedDate']) AND $_POST['publishedDate'] == 'new')
-      {
-        $this->_chapterManager->updatePublishedDate($chapter);
-        $this->_chapterManager->save($chapter);
-      }
-      else
-      {
-        $this->_chapterManager->save($chapter);
-      }
+    { 
+      $this->_chapterManager->save($chapter, $publishedDate);
       $view = new BackendView('saveChapter');
-      $view->generate(array('saveChapter', 'chapter' => $chapter));
+      $view->generate(array('saveChapter', 'chapter' => $chapter, 'publishedDate' => $publishedDate));
 		}
   }
 

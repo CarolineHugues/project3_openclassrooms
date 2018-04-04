@@ -114,7 +114,8 @@ class Router
                     {
                         $chapter = new Chapter(['title' => $_POST['title'], 'content' => $_POST['content'], 'excerpt' => $_POST['excerpt'], 'status' => $_POST['status']]);  
                     }
-                    $this->_backendController->saveChapter($chapter);
+                    $publishedDate = $_POST['publishedDate'];
+                    $this->_backendController->saveChapter($chapter, $publishedDate);
                 }   
                 else if ($_GET['action'] == 'publishChapter')
                 {

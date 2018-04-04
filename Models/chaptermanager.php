@@ -19,7 +19,7 @@ class ChapterManager extends Manager
 
 	public function update(Chapter $chapter) 
 	{
-		$request = $this->db->prepare('UPDATE chapters SET title = :title, author = :author, content = :content, excerpt = :excerpt, updateDate = NOW(), status = :status WHERE id = :id');
+		$request = $this->db->prepare('UPDATE chapters SET title = :title, author = :author, content = :content, excerpt = :excerpt, updateDate = NOW(), publishedDate = NOW(), status = :status WHERE id = :id');
 
 		$request->bindValue(':title', $chapter->title());
 		$request->bindValue(':author', $chapter->author());
@@ -35,8 +35,13 @@ class ChapterManager extends Manager
 
 	public function updatePublishedDate(Chapter $chapter)
 	{
-		$request = $this->db->prepare('UPDATE chapters SET publishedDate = NOW() WHERE id = :id');
+		$request = $this->db->prepare('UPDATE chapters SET title = :title, author = :author, content = :content, excerpt = :excerpt, updateDate = NOW(), status = :status WHERE id = :id');
 
+		$request->bindValue(':title', $chapter->title());
+		$request->bindValue(':author', $chapter->author());
+		$request->bindValue(':content', $chapter->content());
+		$request->bindValue(':excerpt', $chapter->excerpt());
+		$request->bindValue(':status', $chapter->status());
 		$request->bindValue(':id', $chapter->id(), PDO::PARAM_INT);
 
 		$request->execute();
@@ -49,11 +54,25 @@ class ChapterManager extends Manager
 		$this->db->exec('DELETE FROM chapters WHERE id = '.(int) $id);
 	}
 
-	public function save(Chapter $chapter) 
+	public function save(Chapter $chapter, $publishedDate) 
 	{
 		if ($chapter->isValid())
 		{
-			$chapter->isNew() ? $this->add($chapter) : $this->update($chapter);
+			if ($chapter->isNew())
+			{
+				$this->add($chapter);
+			} 
+			else
+			{
+				if ($publishedDate == 'current')
+				{
+					$this->updatePublishedDate($chapter);
+				}
+				else
+				{
+					$this->update($chapter);
+				}
+			}
 		}
 		else
 		{
