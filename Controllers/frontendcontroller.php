@@ -29,9 +29,12 @@ class FrontendController {
 		$curentChaptersPage = $this->_navigation->getCurrentPage($totalChapters, $chaptersPerPage);
 		$firstEntrance = $this->_navigation->getFirstEntrance($curentChaptersPage, $chaptersPerPage);
 
+		$nextPage = $this->_navigation->getNextPage();
+		$previousPage = $this->_navigation->getPreviousPage();
+
     	$chapters = $this->_chapterManager->getPublishedListAsc($firstEntrance, $chaptersPerPage);
     	$view = new FrontendView('listChapters');
-    	$view->generate(array('chapters' => $chapters, 'nbListChaptersPages' => $nbListChaptersPages));
+    	$view->generate(array('chapters' => $chapters, 'nbListChaptersPages' => $nbListChaptersPages, 'nextPage' => $nextPage, 'previousPage' => $previousPage));
 	}
 
 	public function listLastChapters()
