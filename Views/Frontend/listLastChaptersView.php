@@ -23,7 +23,7 @@
 		?>
 		<article id="buttonReadBeginningSpace">
 			<p id="buttonReadBeginning">
-				<a class="button special" href="?action=listChapters">Lire l'histoire depuis le début</a>
+				<a class="button special" href="?action=listChapters&p=1">Lire l'histoire depuis le début</a>
 			</p>
 		</article>
 	</section> 
