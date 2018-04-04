@@ -26,14 +26,29 @@
 				<?php
 				if ($nbListChaptersPages > 1)
 				{
-					for ($i = 1; $i <= $nbListChaptersPages; $i++)
+					?>
+    				<p>
+						<?php if ($previousPage > 0)
+						{
+						 echo "<a class='button small' href='index.php?action=listChapters&p=$previousPage'> << </a>"; 
+						} ?>
+					</p>
+					<?php for ($i = 1; $i <= $nbListChaptersPages; $i++)
 					{
 					?>
-						<li>
+						<li <?php if ($_GET['p'] == $i) {echo 'class="active"';} ?>>
    							<?php echo "<a class='button small' href='index.php?action=listChapters&p=$i'> $i </a>"; ?>
    						</li>
    					<?php	
     				}
+    				?>
+    				<p>
+    					<?php if ($nextPage <= $nbListChaptersPages)
+    					{
+    					 echo "<a class='button small' href='index.php?action=listChapters&p=$nextPage'> >> </a>"; 
+    					} ?>
+    				</p> 
+    			<?php	
     			}	
 				?>
 			</ul>
