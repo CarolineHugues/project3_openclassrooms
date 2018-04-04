@@ -1,6 +1,4 @@
 <?php
-require_once 'Models/manager.php';  /*A ajouter ? */
-require_once 'Models/chapter.php'; /*A ajouter ? */
 
 class ChapterManager extends Manager 
 { 

@@ -1,6 +1,4 @@
 <?php
-require_once 'Models/manager.php';  /*A ajouter ? */
-require_once 'Models/comment.php'; /*A ajouter ? */
 
 class CommentManager extends Manager 
 {

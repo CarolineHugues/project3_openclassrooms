@@ -1,13 +1,5 @@
 <?php
 
-require_once 'Models/chaptermanager.php';
-require_once 'Models/commentmanager.php';
-require_once 'Models/pdofactory.php';
-require_once 'Models/navigation.php';
-require_once 'Views/Frontend/frontendview.php';
-
-
-
 class FrontendController {
 
 	private $_chapterManager,

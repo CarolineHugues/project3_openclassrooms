@@ -1,11 +1,5 @@
 <?php
 
-require_once 'Models/connectionmanager.php';
-require_once 'Models/pdofactory.php';
-require_once 'Models/navigation.php';
-require_once 'Views/Backend/Backendview.php';
-
-
 class ConnectionController 
 {
 

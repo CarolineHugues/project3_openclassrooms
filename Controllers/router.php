@@ -1,7 +1,5 @@
 <?php
-require_once 'Controllers/frontendcontroller.php';
-require_once 'Controllers/connectioncontroller.php';
-require_once 'Controllers/backendcontroller.php';
+require_once 'autoload.php';
 
 session_start();
 

@@ -1,7 +1,5 @@
 <?php
 
-require_once 'Models/connection.php';
-
 class ConnectionManager extends Manager 
 {
 	public function getLogin()
