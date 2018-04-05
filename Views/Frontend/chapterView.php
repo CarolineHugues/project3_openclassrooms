@@ -33,11 +33,17 @@
 				}
 				?>
 				</p>
-				<form id="reported-button" method="post" action="?action=reportComments">
-					<input type="hidden" name="id" value="<?= $comment->id() ?>" />
-					<input type="hidden" name="chapterid" value="<?= $comment->chapterId ?>" />
-					<input id="reportedButton" class="button small" value="Signaler ce commentaire" type="submit">
-				</form>
+				<?php if ($comment->status == 'published')
+				{
+				?>
+					<form id="reported-button" method="post" action="?action=reportComments">
+						<input type="hidden" name="id" value="<?= $comment->id() ?>" />
+						<input type="hidden" name="chapterid" value="<?= $comment->chapterId ?>" />
+						<input id="reportedButton" class="button small" value="Signaler ce commentaire" type="submit">
+					</form>
+				<?php			
+				}
+				?>
 			</div>
 		<?php			
 		}
@@ -50,11 +56,11 @@
 			<div class="row uniform">
 				<div class="6u 12u$(xsmall)">
 					<label for="author">Nom</label>
-					<input id="name" name="author" type="text" />
+					<input id="name" name="author" type="text" placeholder="(Obligatoire)" />
 				</div>
 				<div class="6u 12u$(xsmall)">
 					<label for="authorMail">Mail</label>
-					<input id="mail" name="authorMail" type="email" />
+					<input id="mail" name="authorMail" type="email" placeholder="(Obligatoire) Ne sera pas publié."/>
 				</div>
 				<div class="12u$">
 					<label for="content">Commentaire</label>
