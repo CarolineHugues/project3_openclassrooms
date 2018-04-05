@@ -36,7 +36,7 @@
 					<?php for ($i = 1; $i <= $nbListChaptersPages; $i++)
 					{
 					?>
-						<li <?php if ($_GET['p'] == $i) {echo 'class="active"';} ?>>
+						<li <?php if (isset($_GET['p']) AND $_GET['p'] == $i) {echo 'class="active"';} ?>>
    							<?php echo "<a class='button small' href='index.php?action=listChapters&p=$i'> $i </a>"; ?>
    						</li>
    					<?php	

@@ -18,15 +18,40 @@ class FrontendController {
 		$chaptersPerPage = 4;
 		$totalChapters = $this->_chapterManager->countPublished();
 		$nbListChaptersPages = $this->_navigation->CountNbPages($totalChapters, $chaptersPerPage);
+		
+		if (!isset($_GET['p']) OR (isset($_GET['p']) AND $_GET['p'] <= $nbListChaptersPages))
+		{
+			$curentChaptersPage = $this->_navigation->getCurrentPage($totalChapters, $chaptersPerPage);
+			$firstEntrance = $this->_navigation->getFirstEntrance($curentChaptersPage, $chaptersPerPage);
+
+			$nextPage = $this->_navigation->getNextPage();
+			$previousPage = $this->_navigation->getPreviousPage();
+
+		
+    		$chapters = $this->_chapterManager->getPublishedListAsc($firstEntrance, $chaptersPerPage);
+    		$view = new FrontendView('listChapters');
+    		$view->generate(array('chapters' => $chapters, 'nbListChaptersPages' => $nbListChaptersPages, 'nextPage' => $nextPage, 'previousPage' => $previousPage));
+		}
+		else
+		{
+			$this->pagelistChaptersNotFound();
+		}
+	}
+
+	public function pagelistChaptersNotFound()
+	{
+		$chaptersPerPage = 4;
+		$totalChapters = $this->_chapterManager->countPublished();
+		$nbListChaptersPages = $this->_navigation->CountNbPages($totalChapters, $chaptersPerPage);
+		
 		$curentChaptersPage = $this->_navigation->getCurrentPage($totalChapters, $chaptersPerPage);
 		$firstEntrance = $this->_navigation->getFirstEntrance($curentChaptersPage, $chaptersPerPage);
 
 		$nextPage = $this->_navigation->getNextPage();
 		$previousPage = $this->_navigation->getPreviousPage();
 
-    	$chapters = $this->_chapterManager->getPublishedListAsc($firstEntrance, $chaptersPerPage);
-    	$view = new FrontendView('listChapters');
-    	$view->generate(array('chapters' => $chapters, 'nbListChaptersPages' => $nbListChaptersPages, 'nextPage' => $nextPage, 'previousPage' => $previousPage));
+		$view = new FrontendView('pageListChaptersNotFound');
+		$view->generate(array('nbListChaptersPages' => $nbListChaptersPages, 'nextPage' => $nextPage, 'previousPage' => $previousPage));
 	}
 
 	public function listLastChapters()
@@ -43,13 +68,27 @@ class FrontendController {
 	}
 
 	public function chapter($id)
+	{ 	
+		$totalChapters = $this->_chapterManager->countPublished();
+		if ($_GET['id'] < $totalChapters)
+		{
+			$chapter = $this->_chapterManager->getUnique($id);
+
+			$comments = $this->_commentManager->getListOf($chapter->id());
+
+    		$view = new FrontendView('chapter');
+    		$view->generate(array('chapter' => $chapter, 'comments' => $comments));
+		}
+		else
+		{
+			$this->chapterNotFound();
+		}
+	}
+
+	public function chapterNotFound()
 	{
-		$chapter = $this->_chapterManager->getUnique($id);
-
-		$comments = $this->_commentManager->getListOf($chapter->id());
-
-    	$view = new FrontendView('chapter');
-    	$view->generate(array('chapter' => $chapter, 'comments' => $comments));
+		$view = new FrontendView('chapterNotFound');
+    	$view->generate(array('chapterNotFound'));
 	}
 
 	public function addComment($comment, $chapterId)
@@ -77,6 +116,13 @@ class FrontendController {
 	{
 		$this->_commentManager->reportComment($id);
 		$this->chapter($chapterId); 
+	}
+
+	public function pageNotFound()
+	{
+
+		$view = new FrontendView('pageNotFound');
+		$view->generate(array('pageNotFound'));
 	}
 
 	public function home()

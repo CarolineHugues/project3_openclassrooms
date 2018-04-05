@@ -31,7 +31,21 @@ class Router
             {
                 if ($_GET['action'] == 'listChapters') 
                 {
-                    $this->_frontendController->listChapters();
+                    if (isset($_GET['p']))
+                    {
+                        if ($_GET['p'] > 0)
+                        {
+                            $this->_frontendController->listChapters();
+                        }
+                        else 
+                        {
+                            $this->_frontendController->pagelistChaptersNotFound();
+                        }
+                    } 
+                    else
+                    {
+                        $this->_frontendController->listChapters();
+                    } 
                 }
                 else if ($_GET['action'] == 'listLastChapters') 
                 {
@@ -46,7 +60,8 @@ class Router
                     }
                     else
                     {
-                       throw new Exception("Identifiant de chapitre non valide ou non défini"); 
+                        $this->_frontendController->chapterNotFound();
+                       /*throw new Exception("Identifiant de chapitre non valide ou non défini");*/
                     }
                 }    
                   else if ($_GET['action'] == 'addComment') 
@@ -145,7 +160,8 @@ class Router
                 }
                 else 
                 {
-                    throw new Exception("Action non valide");    
+                    $this->_frontendController->pageNotFound();
+                    /*throw new Exception("Action non valide");*/
                 }
             }           
 			else 
