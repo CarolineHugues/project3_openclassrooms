@@ -54,8 +54,8 @@
 						<?php for ($i = 1; $i <= $nbPublishedChaptersListPages; $i++)
 						{
 						?>
-							<li class="navigationButtons">
-   								<?php echo "<a href='?action=adminAccess&p=$i'> $i </a>"; ?>
+							<li <?php if (isset($_GET['p']) AND $_GET['p'] == $i) {echo 'class="activeButton"';} ?>>
+   								<?php echo "<a class='navigationButtons' href='?action=adminAccess&p=$i'> $i </a>"; ?>
    							</li>
    						<?php
     					}
@@ -119,8 +119,8 @@
 						<?php for ($i = 1; $i <= $nbDraftsChaptersListPages; $i++)
 						{
 						?>
-							<li class="navigationButtons">
-   								<?php echo "<a href='?action=adminAccess&p=$i'> $i </a> ";?>
+							<li <?php if (isset($_GET['p']) AND $_GET['p'] == $i) {echo 'class="activeButton"';} ?>>
+   								<?php echo "<a class='navigationButtons' href='?action=adminAccess&p=$i'> $i </a>"; ?>
    							</li>
    						<?php 
     					}
@@ -187,8 +187,8 @@
 						<?php for ($i = 1; $i <= $nbReportedCommentsListPages; $i++)
 						{
 						?>
-							<li class="navigationButtons">
-   								<?php echo "<a href='?action=adminAccess&p=$i#reportedcommentslist'> $i </a>";?>
+   							<li <?php if (isset($_GET['p']) AND $_GET['p'] == $i) {echo 'class="activeButton"';} ?>>
+   								<?php echo "<a class='navigationButtons' href='?action=adminAccess&p=$i#reportedcommentslist'> $i </a>"; ?>
    							</li>
    						<?php 
     					}
@@ -245,8 +245,8 @@
 						<?php for ($i = 1; $i <= $nbPublishedCommentsListPages; $i++)
 						{
 						?>
-							<li class="navigationButtons">
-   								<?php echo "<a href='?action=adminAccess&p=$i#publishedcommentslist'> $i </a>"; ?>
+							<li <?php if (isset($_GET['p']) AND $_GET['p'] == $i) {echo 'class="activeButton"';} ?>>
+   								<?php echo "<a class='navigationButtons' href='?action=adminAccess&p=$i#publishedcommentslist'> $i </a>"; ?>
    							</li>
    						<?php 
     					}

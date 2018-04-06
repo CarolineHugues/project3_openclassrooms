@@ -305,7 +305,7 @@ body
 	justify-content: right;
 }
 
-.navigationButtons a
+.navigationButtons 
 {
 	border:none;
 	font-size: 14px;
@@ -318,13 +318,22 @@ body
 	box-shadow:1px 1px 3px #999;
 }
 
-.navigationButtons a:hover 
+.navigationButtons:hover 
 {
 	background: #F0FFFF;
 	color:#00CCCB;
 	padding:5px 9px 5px 9px;
 	border:2px solid #00CCCB;
 	box-shadow: none; 
+}
+
+.activeButton a
+{
+	background: #FFFFFF !important;
+	color:#00CCCB !important;
+	border:none !important;
+	box-shadow: none !important; 
+	pointer-events: none;
 }
 
 #updatePasswordSpace
