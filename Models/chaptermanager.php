@@ -119,6 +119,21 @@ class ChapterManager extends Manager
 		return $chapter;
 	}
 
+	public function checkUnique($id) 
+	{
+		$request = $this->db->prepare('SELECT * FROM chapters WHERE id = :id');
+
+		$request->bindValue(':id', (int) $id, PDO::PARAM_INT);
+
+		$request->execute();
+
+		$request->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Chapter');
+
+		$chapter = $request->fetch();
+
+		return $chapter;
+	}
+
 
 	public function getDraftsList($start = -1, $limit = -1) 
 	{
