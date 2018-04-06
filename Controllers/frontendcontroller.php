@@ -69,8 +69,9 @@ class FrontendController {
 
 	public function chapter($id)
 	{ 	
-		$totalChapters = $this->_chapterManager->countPublished();
-		if ($_GET['id'] < $totalChapters)
+		$isvalidChapter = $this->_chapterManager->checkUnique($id);
+		
+		if ($isvalidChapter == true)
 		{
 			$chapter = $this->_chapterManager->getUnique($id);
 
