@@ -9,7 +9,7 @@
 		<h1>Jean Forteroche</h1>
 		<h2>Billet simple pour l'Alaska</h2>
 		
-		<form action="?action=adminAccess" method="post">
+		<form action="?action=adminAccess&p=1" method="post">
 			<fieldset id="connectionFields">
             <legend>Accéder à l'espace d'administration :</legend>
 				<label>Pseudo</label>
