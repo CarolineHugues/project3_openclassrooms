@@ -92,7 +92,7 @@ class FrontendController {
     	$view->generate(array('chapterNotFound'));
 	}
 
-	public function addComment($comment, $chapterId)
+	public function addComment()
 	{
 		if (empty($_POST['author']))
        	{
@@ -108,13 +108,17 @@ class FrontendController {
         }
         else 
         {
+        	$comment = new Comment(['author' => $_POST['author'], 'authorMail' => $_POST['authorMail'], 'content' => $_POST['content'], 'chapterId' => $_POST['chapterid']]);
+           	$chapterId = intval($_POST['chapterid']);
 			$this->_commentManager->add($comment);
 			$this->chapter($chapterId); //Actualisation de l'affichage du chapitre
 		}	 
 	}
 
-	public function reportComments($id, $chapterId)
+	public function reportComments()
 	{
+		$chapterId = intval($_POST['chapterid']);
+        $id = intval($_POST['id']);
 		$this->_commentManager->reportComment($id);
 		$this->chapter($chapterId); 
 	}

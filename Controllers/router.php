@@ -62,15 +62,11 @@ class Router
                 }    
                   else if ($_GET['action'] == 'addComment') 
                 {
-                    $comment = new Comment(['author' => $_POST['author'], 'authorMail' => $_POST['authorMail'], 'content' => $_POST['content'], 'chapterId' => $_POST['chapterid']]);
-                    $chapterId = intval($_POST['chapterid']);
-                    $this->_frontendController->addComment($comment, $chapterId);
+                    $this->_frontendController->addComment();
                 }   
                 else if ($_GET['action'] == 'reportComments') 
                 {
-                    $chapterId = intval($_POST['chapterid']);
-                    $id = intval($_POST['id']);
-                    $this->_frontendController->reportComments($id, $chapterId);
+                    $this->_frontendController->reportComments();
                 }   
                 else if ($_GET['action'] == 'connectionAccess') 
                 {
@@ -117,42 +113,27 @@ class Router
                 } 
                 else if ($_GET['action'] == 'saveChapter') 
                 {
-                    if (isset($_POST['id']))
-                    {
-                      	$chapter = new Chapter(['id' => $_POST['id'],'title' => $_POST['title'], 'content' => $_POST['content'], 'excerpt' => $_POST['excerpt'], 'status' => $_POST['status']]);
-                    }
-                    else 
-                    {
-                        $chapter = new Chapter(['title' => $_POST['title'], 'content' => $_POST['content'], 'excerpt' => $_POST['excerpt'], 'status' => $_POST['status']]);  
-                    }
-                    $publishedDate = $_POST['publishedDate'];
-                    $this->_backendController->saveChapter($chapter, $publishedDate);
+                    $this->_backendController->saveChapter();
                 }   
                 else if ($_GET['action'] == 'publishChapter')
                 {
-                    $id = $_POST['id'];
-                    $this->_backendController->publishChapter($id);
+                    $this->_backendController->publishChapter();
                 }
                 else if ($_GET['action'] == 'deleteChapter') 
                 {
-                    $id = $_POST['id'];
-                    $this->_backendController->deleteChapter($id);
+                    $this->_backendController->deleteChapter();
                 }
                 else if ($_GET['action'] == 'ignoreReportedComment') 
                 {
-                    $id = $_POST['id'];
-                    $this->_backendController->ignoreReportedComment($id);
+                    $this->_backendController->ignoreReportedComment();
                 }
                 else if ($_GET['action'] == 'deleteComment') 
                 {
-                    $id = $_POST['id'];
-                    $this->_backendController->deleteComment($id);
+                    $this->_backendController->deleteComment();
                 }
                 else if ($_GET['action'] == 'updatePassword') 
                 {
-                    $login = $_POST['login'];
-                    $password = $_POST['password'];
-                    $this->_connectionController->updatePassword($password, $login);
+                    $this->_connectionController->updatePassword();
                 }
                 else 
                 {

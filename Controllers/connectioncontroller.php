@@ -75,7 +75,7 @@ class ConnectionController
 		}	
 	}
 
-	public function updatePassword($password, $login)
+	public function updatePassword()
   	{
   		if (empty($_POST['password']))
   		{
@@ -89,6 +89,8 @@ class ConnectionController
   		{
   			if ($_POST['password'] == $_POST['newpassword'])
   			{
+          $login = $_POST['login'];
+          $password = $_POST['password'];
   				$this->_connectionManager->update($password, $login);
   				$view = new BackendView('updatePassword');
     			$view->generate(array('updatePassword'));

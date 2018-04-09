@@ -25,7 +25,7 @@ class BackendController
     $view->generate(array('writeChapter', 'chapter' => $chapter));
   }
 
-  public function saveChapter($chapter, $publishedDate)
+  public function saveChapter()
   {
   	if (empty($_POST['title']))
     {
@@ -41,35 +41,48 @@ class BackendController
     }
     else 
     { 
+      if (isset($_POST['id']))
+      {
+        $chapter = new Chapter(['id' => $_POST['id'],'title' => $_POST['title'], 'content' => $_POST['content'], 'excerpt' => $_POST['excerpt'], 'status' => $_POST['status']]);
+      }
+      else 
+      {
+        $chapter = new Chapter(['title' => $_POST['title'], 'content' => $_POST['content'], 'excerpt' => $_POST['excerpt'], 'status' => $_POST['status']]);  
+      }
+      $publishedDate = $_POST['publishedDate'];
       $this->_chapterManager->save($chapter, $publishedDate);
       $view = new BackendView('saveChapter');
       $view->generate(array('saveChapter', 'chapter' => $chapter, 'publishedDate' => $publishedDate));
 		}
   }
 
-  public function publishChapter($id)
+  public function publishChapter()
   {
+    $id = $_POST['id'];
     $this->_chapterManager->publish($id);
     $view = new BackendView('publishChapter');
     $view->generate(array('publishChapter'));
   }
 
-  public function deleteChapter($id)
+  public function deleteChapter()
   {
+    $id = $_POST['id'];
     $this->_chapterManager->delete($id);
     $view = new BackendView('deleteChapter');
     $view->generate(array('deleteChapter'));
   }
 
-  public function ignoreReportedComment($id)
+  public function ignoreReportedComment()
   {
+    $id = $_POST['id'];
     $this->_commentManager->ignoreReportedComment($id);
     $view = new BackendView('ignoreReportedComment');
     $view->generate(array('ignoreReportedComment'));
   }
 
-  public function deleteComment($id)
+  public function deleteComment()
   {
+    $id = $_POST['id'];
     $this->_commentManager->delete($id);
     $view = new BackendView('deleteComment');
     $view->generate(array('deleteComment'));
