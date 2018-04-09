@@ -33,7 +33,7 @@ class ChapterManager extends Manager
 		$request->closeCursor(); 
 	}
 
-	public function updatePublishedDate(Chapter $chapter)
+	public function updatePublished(Chapter $chapter)
 	{
 		$request = $this->db->prepare('UPDATE chapters SET title = :title, author = :author, content = :content, excerpt = :excerpt, updateDate = NOW(), status = :status WHERE id = :id');
 
@@ -66,7 +66,7 @@ class ChapterManager extends Manager
 			{
 				if ($publishedDate == 'current')
 				{
-					$this->updatePublishedDate($chapter);
+					$this->updatePublished($chapter);
 				}
 				else
 				{
