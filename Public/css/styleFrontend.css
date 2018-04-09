@@ -1,8 +1,27 @@
 /* ---------------------- Home -------------------------*/
 
-#presentation {
+.presentation 
+{
 	max-width: 910px;
 	margin: auto;
+}
+
+#excerptTitle
+{
+	max-width: 910px;
+	margin:auto;
+	margin-top:80px;
+	margin-bottom:10px;
+}
+
+#excerpt 
+{	
+	max-width: 820px;
+	margin: auto;
+	font-style:italic;
+	margin-bottom: 50px;
+	font-size: 15px;
+	line-height: 1.5;
 }
 
 #link-presentation {
