@@ -95,10 +95,10 @@ class ChapterManager extends Manager
 			return $this->db->query('SELECT COUNT(*) FROM chapters WHERE status = \'published\'')->fetchColumn(); 
 	}
 
-	public function countChapters() 
+	/*public function countChapters() 
 	{
 			return $this->db->query('SELECT COUNT(*) FROM chapters')->fetchColumn();  
-	}
+	}*/
 
 	public function getUnique($id) 
 	{
@@ -214,7 +214,7 @@ class ChapterManager extends Manager
     }
 
 
-	public function getList($start = -1, $limit = -1) 
+	/*public function getList($start = -1, $limit = -1) 
 	{
 		$sql = 'SELECT id, title, author, content, excerpt, addDate, updateDate, publishedDate, status FROM chapters ORDER BY id DESC';
 
@@ -238,5 +238,5 @@ class ChapterManager extends Manager
 		$request->closeCursor();
 
 		return $chaptersList;
-	}
+	}*/
 }

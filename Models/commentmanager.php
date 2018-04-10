@@ -36,10 +36,10 @@ class CommentManager extends Manager
 		$this->db->exec('DELETE FROM comments WHERE id = '.(int) $id);
 	}
 
-	public function countComments() 
+	/*public function countComments() 
 	{
 		return $this->db->query('SELECT COUNT(*) FROM comments')->fetchColumn(); 
-	}
+	}*/
 
 	public function countPublishedComments() 
 	{
@@ -78,7 +78,7 @@ class CommentManager extends Manager
 		return $comment;
 	}
 
-	public function getList($start = -1, $limit = -1) 
+	/*public function getList($start = -1, $limit = -1) 
 	{
 		$sql = 'SELECT id, author, content, publishedDate, authorMail, status FROM comments ORDER BY id DESC';
 
@@ -100,7 +100,7 @@ class CommentManager extends Manager
 		$request->closeCursor();
 
 		return $commentsList;
-	}
+	}*/
 
 	public function getReportedList($start = -1, $limit = -1) 
 	{
