@@ -61,7 +61,7 @@
             <i>Billet simple pour l'Alaska</i> - un livre de Jean Forteroche.
           </p>
           <P id="administrationAccess">
-          	<a class="button small" href="?action=adminAccess">Administration</a>
+          	<a class="button small" href="?action=adminAccess&p=1">Administration</a>
           </P>
         </footer>
         <div id="copyright">
